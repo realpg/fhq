@@ -1,0 +1,28 @@
+/* pages/article/article.wxss */
+
+page{
+    background-color: #FFFFFF;
+}
+image{
+    margin: 4px 0;
+}
+
+.tw-title {
+  position: absolute;
+  top: 24px;
+  left: 0px;
+  color: #fff;
+  max-width: 340px;
+}
+
+.tw-title-div {
+  display: inline-flex;
+  background-repeat: no-repeat;
+  background-size: 100% 100%;
+  -moz-background-size: 100% 100%;
+}
+
+.book-bg {
+  height: 100%;
+  background-color: #f8f8f8;
+}

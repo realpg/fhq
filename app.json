@@ -1,0 +1,51 @@
+{
+  "pages": [
+    "pages/updateEnterprise/updateEnterprise",
+    "pages/index/index",
+    "pages/article/article",
+    "pages/my/my",
+    "pages/product/product",
+    "pages/templates/bookInfoTpl/bookInfoTpl",
+    "pages/templates/barInfoTpl/barInfoTpl",
+    "pages/templates/messageInfoTpl/messageInfoTpl",
+    "pages/message/message",
+    "pages/orders/orders",
+    "pages/manage/manage",
+    "pages/enterprise/enterprise"
+  ],
+  "window": {
+    "backgroundTextStyle": "light",
+    "navigationBarBackgroundColor": "#fff",
+    "navigationBarTitleText": "共享办公区",
+    "enablePullDownRefresh": false,
+    "navigationBarTextStyle": "black",
+    "backgroundColor": "#f8f8f8"
+  },
+  "tabBar": {
+    "color": "#8A8A8A",
+    "borderStyle": "white",
+    "selectedColor": "#36BE7A",
+    "backgroundColor": "white",
+    "list": [
+      {
+        "pagePath": "pages/index/index",
+        "text": "首页",
+        "iconPath": "images/home_n.png",
+        "selectedIconPath": "images/home_r.png"
+      },
+      {
+        "pagePath": "pages/manage/manage",
+        "text": "办理",
+        "iconPath": "images/banli_n.png",
+        "selectedIconPath": "images/banli_r.png"
+      },
+      {
+        "pagePath": "pages/my/my",
+        "text": "我的",
+        "iconPath": "images/user_n.png",
+        "selectedIconPath": "images/user_r.png"
+      }
+    ]
+  },
+  "debug": true
+}

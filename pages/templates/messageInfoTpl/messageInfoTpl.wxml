@@ -1,0 +1,42 @@
+<!--pages/templates/messageInfoTpl/messageInfoTpl.wxml-->
+<!--该模板用于资讯页展示-->
+<template name="twListIndex">
+<!-- <navigator url="/pages/my/my"> -->
+  <view class="margin-top-10 tw-div-shadow">
+    <view style="margin-left:5px;margin-right:5px;border-radius:5px;" class="white-bg">
+      <view style="position:relative;" catchtap="jumpMessageInfo" data-messageid="{{id}}">
+        <image src="{{img}}" class="tw-img" mode="aspectFill"></image>
+        <view class="tw-img mask-div-black"></view>
+        <view class="font-size-14 tw-title text-oneline tw-title-div" style="background-image: url('../../images/text_bmask.png');">
+          <text class="margin-left-10" style="margin-right:50px;">{{title}}</text>
+        </view>
+
+        <view class="font-size-10 tw-time text-oneline tw-title-div" style="background-image: url('../../images/text_bmask.png');">
+          <text class="margin-left-10" style="margin-right:50px;">{{created_at}}</text>
+        </view>
+
+      </view>
+      <view>
+        <view class="weui-flex padding-bottom-10">
+          <view class="weui-flex__item">
+            <view class="placeholder" style="display:flex;align-items:center;">
+              <text class="font-size-16  margin-left-5">{{author}}</text>
+            </view>
+          </view>
+          <view class="weui-flex__item">
+            <view class="placeholder  margin-top-5" style="display:flex;align-items:center;float:right;">
+              <image wx:if="{{flag == 0}}" src="" class="opt-icon-sma margin-right-5"></image>
+              <image wx:elif="{{flag == 1}}" src="../../images/fire.png" class="opt-icon-sma margin-right-5"></image>
+              <text wx:if="{{flag == 1}}" class="font-size-12  margin-right-10 grey-font">热门</text>
+
+              <image src="../../images/show_n.png" class="opt-icon-sma margin-right-5"></image>
+              <text class="font-size-12  margin-right-10 grey-font">{{show_num}}</text>
+
+            </view>
+          </view>
+        </view>
+      </view>
+    </view>
+  </view>
+  <!-- </navigator> -->
+</template>

@@ -54,10 +54,18 @@ Page({
         var files1 = []
         var files2 = []
         var files3 = []
+        if (res.data.ret.lice_img !== null) {
         files.push(res.data.ret.lice_img)
+        }
+        if (res.data.ret.tax_img!==null){
         files1.push(res.data.ret.tax_img)
+        }
+        if (res.data.ret.owner_card1 !== null) {
         files2.push(res.data.ret.owner_card1)
+        }
+        if (res.data.ret.owner_card2 !== null) {
         files3.push(res.data.ret.owner_card2)
+        }
         console.log("test" + JSON.stringify(files))
         vm.setData({
           'test[0].placeholder': res.data.ret.name,

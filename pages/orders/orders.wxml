@@ -1,6 +1,4 @@
 <!--pages/orders/orders.wxml-->
-<view>11111111111</view>
-
 <!--开通会员_Start-->
 <view class="card-bg">
   <image src="{{bg}}" class="card-img"></image>

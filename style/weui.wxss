@@ -116,7 +116,7 @@ icon {
 }
 
 .weui-cell__ft_in-access:after {
-  content: " ";
+  content: "";
   display: inline-block;
   height: 6px;
   width: 6px;

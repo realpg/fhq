@@ -8,7 +8,8 @@ var SERVER_URL = (TESTMODE) ? DEBUG_URL : SERVER_URL;
 ///////七牛相关///////////////////////////////////
 //根据key值获取图片真实链接
 function getImgRealUrl(key_v) {
-  return "http://twst.isart.me/" + key_v;
+  // return "http://twst.isart.me/" + key_v;
+  return "http://dsyy.isart.me/" + key_v;  
 }
 
 //获取七牛URL，进行图片剪裁
@@ -70,7 +71,6 @@ function isLocalImg(img) {
 
 //跳转到登录页面
 function navigateToLogin(param) {
-
   console.log("navigateToLogin" + JSON.stringify(param));
   wx.navigateTo({
     url: '/pages/login/login?jsonStr=' + JSON.stringify(param),
@@ -129,6 +129,11 @@ function test(param) {
   console.log(JSON.stringify("11"));
 }
 
+//获取七牛上传token
+function getQnToken(param, successCallback, errorCallback) {
+  wxRequest(SERVER_URL + '/user/getQiniuToken', param, "GET", successCallback, errorCallback);
+}
+
 //获取用户的getAds
 function getAds(param, successCallback, errorCallback) {
   wxRequest(SERVER_URL + '/home', param, "GET", successCallback, errorCallback);
@@ -164,6 +169,16 @@ function getOfficePageByOfficeId(param, successCallback, errorCallback) {
 //获取用户录入的企业列表
 function getListByUserId(param, successCallback, errorCallback) {
   wxRequest(SERVER_URL + '/enter/getListByUserId', param, "GET", successCallback, errorCallback);
+}
+
+//更新用户录入的企业信息
+function updateEnterprise(param, successCallback, errorCallback) {
+  wxRequest(SERVER_URL + '/enter/edit', param, "POST", successCallback, errorCallback);
+}
+
+//根据id获取企业信息详情
+function getEnterpriseById(param, successCallback, errorCallback) {
+  wxRequest(SERVER_URL + '/enter/getById', param, "GET", successCallback, errorCallback);
 }
 
 // 根据id获取用户信息（带token）
@@ -521,5 +536,8 @@ module.exports = {
   imageUtil: imageUtil,
   getByIdWithToken: getByIdWithToken,
   getMessagegetById: getMessagegetById,
+  updateEnterprise: updateEnterprise,
+  getQnToken: getQnToken,
   getListByUserId: getListByUserId,
+  getEnterpriseById: getEnterpriseById
 }

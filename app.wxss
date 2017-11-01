@@ -238,6 +238,10 @@ page {
   padding-left: 40rpx;
 }
 
+.padding-left-50 {
+  padding-left: 50rpx;
+}
+
 .padding-right-10 {
   padding-right: 10rpx;
 }
@@ -546,13 +550,6 @@ page {
   font-size: 34rpx;
   color: #323232;
   letter-spacing: -0.82rpx;
-}
-
-.office-font{
- /*font-family: .PingFang-SC-Regular;*/
-  font-size: 25rpx;
-  color: #646464;
-  letter-spacing: -0.68rpx;
 }
 
 .office-font-blue{

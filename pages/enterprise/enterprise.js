@@ -3,7 +3,7 @@ var util = require('../../utils/util.js')
 var vm = null
 Page({
   data: {
-
+    enterprise:[],
   },
   onLoad: function (options) {
     vm = this
@@ -14,9 +14,26 @@ Page({
     util.getListByUserId({},function(ret){
       console.log("getListByUserId:" + JSON.stringify(ret));
       if (ret.data.code == "200") {
-        
+        vm.setData({
+          enterprise : ret.data.ret
+        })
+        console.log("用户企业信息列表" + JSON.stringify(vm.data.enterprise))
       }
     },null)
+  },
+
+  jumpEnterpriseInfo:function(e){
+    var enterpriseId = JSON.stringify(e.currentTarget.dataset.id)
+    console.log(JSON.stringify("企业Id" + e.currentTarget.dataset.id))
+    wx.navigateTo({
+      url: '/pages/updateEnterprise/updateEnterprise?id=' + enterpriseId
+    })
+  },
+
+  addEnterprise:function(e){
+    wx.navigateTo({
+      url: '/pages/updateEnterprise/updateEnterprise',
+    })
   },
 
   /**

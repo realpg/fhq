@@ -1,71 +1,60 @@
 // pages/orders/orders.js
-var util = require('../../utils/util.js')
+var util = require('../../utils/util.js');
 var vm = null
 Page({
   data: {
-    officeid: null,
+    orders: [],
+
+    tab1: {
+      list: [{
+        title: '全部'
+      }, {
+        title: '待付款'
+      }, {
+        title: '待发货'
+      }, {
+        title: '待收货'
+      }, {
+        title: '待评价'
+      }],
+      selectedId: 0,
+      scroll: false,
+    },
+
   },
+
   onLoad: function (options) {
     vm = this
-    // console.log("下单" + options.officeid)
-    vm.setData({
-      officeid: options.officeid
+    vm.getPayListByUserId()
+  },
+
+
+  getPayListByUserId: function () {
+    util.getPayListByUserId({}, function (res) {
+      console.log("根据id获取订单" + JSON.stringify(res))
+      vm.setData({
+        orders: res.data.ret
+      })
+      console.log("根据id获取订单" + JSON.stringify(vm.data.orders))
+
+    }, null)
+  },
+
+  // handleZanTabChange(e) {
+  //   var componentId = e.componentId;
+  //   var selectedId = e.selectedId;
+  //   this.setData({
+  //     `${componentId}.selectedId`: selectedId
+  //   });
+  // }
+
+  // 导航切换监听
+  navbarTap: function (e) {
+    console.debug(e);
+    console.log(e.currentTarget.dataset.idx)
+    this.setData({
+      'tab1.selectedId': e.currentTarget.dataset.idx
     })
-    vm.getListByUserId()
   },
 
-  getListByUserId:function(){
-    util.getListByUserId({},function(res){
-      console.log("getListByUserId" + JSON.stringify(res))
-    },null)
-  },
-
-  /**
-   * 生命周期函数--监听页面初次渲染完成
-   */
-  onReady: function () {
-  
-  },
-
-  /**
-   * 生命周期函数--监听页面显示
-   */
-  onShow: function () {
-  
-  },
-
-  /**
-   * 生命周期函数--监听页面隐藏
-   */
-  onHide: function () {
-  
-  },
-
-  /**
-   * 生命周期函数--监听页面卸载
-   */
-  onUnload: function () {
-  
-  },
-
-  /**
-   * 页面相关事件处理函数--监听用户下拉动作
-   */
-  onPullDownRefresh: function () {
-  
-  },
-
-  /**
-   * 页面上拉触底事件的处理函数
-   */
-  onReachBottom: function () {
-  
-  },
-
-  /**
-   * 用户点击右上角分享
-   */
-  onShareAppMessage: function () {
-  
-  }
-})
+});

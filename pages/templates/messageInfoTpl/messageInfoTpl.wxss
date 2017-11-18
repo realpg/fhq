@@ -100,3 +100,23 @@
   height: 180px;
   border-radius: 5px;
 }
+
+.mask-div-black {
+  background: rgba(0, 0, 0, 0);
+  position: absolute;
+  top: 0px;
+  left: 0px;
+}
+
+.office-font{
+  font-size: 22rpx;
+  color: #AAA;
+}
+
+/* 下边框  */
+.product-down-line {
+  width: 720rpx;
+  height: 2rpx;
+  background: lightgray;
+  margin-left: 30rpx;
+}

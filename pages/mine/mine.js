@@ -5,16 +5,18 @@ var app = getApp()
 Page({
   data: {
     systemInfo: {},
-    userPage: {},
-    myBg: "http://dsyy.isart.me/bg.png",
-    icon: [
-      { img: "/images/mymy.png", title: "个人资料", url: "/pages/product/product" },
-      { img: "/images/mymy.png", title: "我的订单", url: "/pages/product/product" },
-      { img: "/images/mymy.png", title: "企业信息", url: "/pages/enterprise/enterprise" },
-      { img: "/images/mymy.png", title: "申请代理", url: "/pages/product/product" },
-      { img: "/images/mymy.png", title: "订单详情", url: "/pages/product/product" },
-    ],
+    userInfo: {},
+    bg: { img:"http://ozhs589fk.bkt.clouddn.com/bg.png?imageView2/1/w/375/h/150/interlace/1"},
   },
+
+  //事件处理函数
+  toOrder: function () {
+    wx.navigateTo({
+      url: '../orders/orders'
+    })
+  },
+  
+
   onLoad: function (options) {
     vm = this
     //初始化sysInfo
@@ -24,24 +26,22 @@ Page({
         systemInfo: res
       })
     })
-    var userInfo = wx.getStorageSync("userInfo")
-    vm.setData({
-      userPage: userInfo
-    });
-    console.log("信息" + JSON.stringify(userInfo))
-    // vm.getByIdWithToken()
+    // var userInfo = app.globalData.userInfo  
+    // vm.setData({
+    //   userInfo: userInfo
+    // });
+    // console.log("信息" + JSON.stringify(userInfo))
+    vm.getByIdWithToken()
   },
 
-  //根据用户页面
+  //根据id获取用户信息
   getByIdWithToken: function (e) {
-    util.getByIdWithToken({}, function (ret) {
+    var id = app.globalData.userInfo.id
+    util.getByIdWithToken({ id: id }, function (ret) {
       console.log("getByIdWithToken" + JSON.stringify(ret))
-      var msgObj = ret.data.obj;
-      for (var i = 0; i < msgObj.workFolderInfos.length; i++) {
-        msgObj.workFolderInfos[i].folder_icon = util.qiniuUrlTool(msgObj.workFolderInfos[i].folder_icon, "folder_index");
-      }
+      var msgObj = ret.data.ret;
       vm.setData({
-        userPage: msgObj
+        userInfo: msgObj
       });
     })
   },

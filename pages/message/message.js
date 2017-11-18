@@ -6,15 +6,11 @@ var myType = null
 var vm = null;
 Page({
   data: {
-    messageList:[],
-    policyList:[],
-    recomm_list:[],
+    messageList: [],
+    policyList: [],
+    recomm_list: [],
     // myType:null
   },
-
-  /**
-   * 生命周期函数--监听页面加载
-   */
   onLoad: function (options) {
     vm = this
     // console.log("myType" + JSON.stringify(options.myType))
@@ -27,20 +23,24 @@ Page({
       "type": myType,
       "page": page
     }
-    util.getMessageList(param,function(res){
+    util.getMessageList(param, function (res) {
       // util.showLoading('获取数据');
       // util.getIndexFoldersSim(param, function (res) {
       //   if (!res.data.result) {
       //     util.showToast('获取失败')
       //     return;
       //   }
-    // },null);
-        console.log("messageList: " + JSON.stringify(res.data.ret))
-        vm.setData({
-          messageList: res.data.ret.data
-        })
-      // console.log("setFolderList recomm_list:" + JSON.stringify(vm.data.recomm_list))
-  },null)
+      // },null);
+      console.log("资讯页数据" + JSON.stringify(res.data.ret.data))
+      var messageList = res.data.ret.data
+      for (var i = 0; i < messageList.length; i++) {
+        messageList[i].img = util.qiniuUrlTool(messageList[i].img, "folder_index");
+      }
+      console.log(JSON.stringify(messageList[0].img)) 
+      vm.setData({
+        messageList: messageList
+      })
+    }, null)
   },
 
   jumpMessageInfo: function (e) {

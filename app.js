@@ -1,8 +1,6 @@
 //app.js
 const util = require('./utils/util.js')
-
 var vm = null
-
 App({
   onLaunch: function () {
     //获取vm
@@ -41,8 +39,9 @@ App({
               console.log("login:" + JSON.stringify(ret));
               if (ret.data.code == "200") {
                 vm.storeUserInfo(ret.data.ret)
-                vm.updateUserInfo(function (ret) {
-                })
+                if (util.judgeIsAnyNullStr(ret.data.ret.nick_name)){
+                vm.updateUserInfo(function (ret) {})
+                }
               }
             }, null);
           }, null);

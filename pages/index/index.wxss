@@ -1,6 +1,27 @@
 /**index.wxss**/
-
 .slide-image {
   width: 100%;
   height: 100%;
 }
+
+.weui-grid__icon-copy {
+  display: block;
+  width: 35px;
+  height: 35px;
+  margin: 0 auto;
+}
+/* tab样式 */
+.weui-tab__content{
+    padding-top: 60px;
+    text-align: center;
+}
+/* 猜您喜欢 */
+.line-text {
+  font-size: 30rpx;
+  border-left: 2px solid #e75110;
+  padding-left: 20rpx;
+  margin: 10px 30rpx;
+  font-weight: bold;
+}
+
+

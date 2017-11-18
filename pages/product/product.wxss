@@ -110,36 +110,16 @@ button::after {
   content: none;
 }
 
-.book-share1 {
-  width: 50rpx;
-  margin-left: 10rpx;
+.office-share1 {
+  /* width: 220rpx; */
+  width: 250rpx;  
+  margin-left: 60rpx;
 }
 
-.book-share2 {
-  width: 220rpx;
-  margin-left: 0rpx;
-}
-
-.book-share3 {
-  width: 50rpx;
-  margin-left: 0rpx;
-}
-
-.book-share4 {
-  width: 190rpx;
-  margin-left: 10rpx;
-}
-
-.book-share5 {
-  background-color: #FF2D2D;
-  width: 220rpx;
+.office-share2 {
+  background-color: #ffcc00;
+  width: 500rpx;
   margin-left: 0rpx; 
-}
-
-.book-share6 {
-  width: 120rpx;
-  margin-left: 10rpx;
-  margin-right: 50rpx;
 }
 
 .read-photo{

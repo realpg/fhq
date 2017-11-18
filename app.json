@@ -2,17 +2,19 @@
   "pages": [
     "pages/index/index",
     "pages/enterprise/enterprise",
+    "pages/mine/mine",
+    "pages/myMessage/myMessage",
+    "pages/product/product",
+    "pages/test/test",
+    "pages/alterMyMessage/alterMyMessage",
+    "pages/orders/orders",
+    "pages/downOrders/downOrders",
     "pages/updateEnterprise/updateEnterprise",
     "pages/article/article",
-    "pages/my/my",
-    "pages/product/product",
-    "pages/templates/bookInfoTpl/bookInfoTpl",
-    "pages/templates/barInfoTpl/barInfoTpl",
     "pages/templates/messageInfoTpl/messageInfoTpl",
     "pages/message/message",
-    "pages/orders/orders",
     "pages/manage/manage",
-    "pages/enterpriseById/enterpriseById"
+    "pages/pay/pay"
   ],
   "window": {
     "backgroundTextStyle": "light",
@@ -25,7 +27,7 @@
   "tabBar": {
     "color": "#8A8A8A",
     "borderStyle": "white",
-    "selectedColor": "#36BE7A",
+    "selectedColor": "#ffcc00",
     "backgroundColor": "white",
     "list": [
       {
@@ -41,7 +43,7 @@
         "selectedIconPath": "images/banli_r.png"
       },
       {
-        "pagePath": "pages/my/my",
+        "pagePath": "pages/mine/mine",
         "text": "我的",
         "iconPath": "images/user_n.png",
         "selectedIconPath": "images/user_r.png"

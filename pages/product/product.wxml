@@ -1,51 +1,42 @@
 <!--pages/product/product.wxml-->
-
 <view class="book-bg">
-  <image class="image_frame" src="{{tw_steps[0].img}}" mode="aspectFill"></image>
-  <view class="font-size-14 tw-title text-oneline tw-title-div" style="background-image: url('../../images/text_bmask.png');">
-    <text wx:if="{{good_info.flag == 1}}" class="margin-left-10" style="margin-right:50px;">推荐</text>
-</view>
-  <view class="page">
-    <view class="page__hd" style='padding: 0px 100px'>
-        <view class="page__title text-oneline" style='text-align:center;'>{{good_info.title}}</view>
-        <view wx:if="{{good_info.type == 0}}" class="page__desc" style='text-align:center;'>办公类商品</view>
-        <view wx:elif="{{good_info.type == 1}}" class="page__desc" style='text-align:center;'>办理类商品</view>
+  <view style='weight:100%;text-align: center;margin-top:20rpx'>
+    <image class="image_frame" src="{{good_info.img}}" mode="aspectFill"></image>
+  </view>
+
+  <view style='display: flex;flex-direction: row; margin-bottom:20rpx'>
+    <view class='text-twoline' style='padding-left: 30rpx;float: left;width: 500rpx;position: relative;'>
+      <view class='office-title-font' style='font-weight:bold;'>
+        {{good_info.title}}
+      </view>
+      <view style='height:20rpx;'></view>
+      <view style='color:#AAA'>
+        {{good_info.desc}}
+      </view>
     </view>
-    <view class="page__bd">
-        <view class="weui-article">
-             <!-- <view class="weui-article__h1">大标题</view> -->
-            <view class="weui-article__section">
-                <!-- <view class="weui-article__title">章标题</view> -->
-                <view class="weui-article__section">
-                    <!-- <view class="weui-article__h3">1.1 节标题</view>  -->
-                    <view class="weui-article__p">
-                            {{tw_steps[0].text}}   
-                    </view>
-                 </view>
-            </view> 
-        </view>
+    <view class='office-font-price' style='margin-left:30rpx ;float: right;position: relative;margin-top:50rpx;'>
+      {{good_info.show_price}}
     </view>
-</view>
+  </view>
+
+  <view style='width: 100%;height: 20rpx; background: #f5f5f5;'></view>
+
+  <block wx:for="{{tw_steps}}">
+    <view style='weight:100%;text-align: center; margin-top:30rpx'>
+      <image class="image_frame" src="{{item.img}}" mode="aspectFill"></image>
+    </view>
+    <view style='padding:30rpx;color:#AAA'>
+      {{item.text}}
+    </view>
+    <view style='width: 100%;height: 20rpx; background: #f5f5f5;'></view>
+  </block>
+
+  <view style='height:100rpx'></view>
 
   <view class="white-bg weui-flex book-shara-box border-top">
-    <view class="book-share1">
-      <image src="/images/money.png" class="share-img margin-right-10"></image>
-    </view>
-    <view class="book-share2">
-      价格：{{good_info.show_price}}
-    </view>
-     <view class="book-share3">
-      <image src="/images/residue.png" class="share-img"></image>
-    </view>
-    <view class="book-share4">
+    <view class="office-share1">
       剩余： {{good_info.count}}间
     </view>
-    <view class='book-share5 text-center' catchtap="gotobuy">去下单</view>
-     <!-- <button class="book-share5 book-shara-background-green" open-type="share">
-      <image src="/images/book-share.png" class="share-img"></image>
-    </button>
-    <button class="book-share6 book-shara-background-green" open-type="share">
-      分享
-    </button>   -->
+    <view class='office-share2 text-center' catchtap="gotobuy">立即下单</view>
   </view>
 </view>

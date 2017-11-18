@@ -1,0 +1,267 @@
+/* pages/orders/orders.wxss */
+
+.card-bg {
+  height: 100%;
+}
+
+.card-img {
+  width: 100%;
+  height: 280rpx;
+}
+
+.card-word {
+  /* font-family: PingFang-SC-Regular; */
+  font-size: 28rpx;
+  color: #323232;
+  letter-spacing: -0.68rpx;
+  line-height: 80rpx;
+}
+
+.card-button {
+  height: 80rpx;
+  background: #efefef;
+  border-radius: 8rpx;
+  /* font-family: PingFang-SC-Medium; */
+  font-size: 28rpx;
+  color: #464646;
+  letter-spacing: -0.68rpx;
+  line-height: 80rpx;
+  float: left;
+  padding-left: 30rpx;
+  padding-right: 30rpx;
+  text-align: center;
+}
+
+.card-button-recommend {
+  height: 80rpx;
+  background: #efefef;
+  border-radius: 8rpx 0rpx 0rpx 8rpx;
+  /* font-family: PingFang-SC-Medium; */
+  font-size: 28rpx;
+  color: #464646;
+  letter-spacing: -0.68rpx;
+  line-height: 80rpx;
+  float: left;
+  padding-left: 30rpx;
+  padding-right: 30rpx;
+  text-align: center;
+}
+
+.button-recommend {
+  width: 40rpx;
+  height: 80rpx;
+  background: #ff7070;
+  border-radius: 0rpx 8rpx 8rpx 0rpx;
+  /* font-family: PingFang-SC-Medium; */
+  font-size: 22rpx;
+  color: #fff;
+  letter-spacing: 2rpx;
+  line-height: 40rpx;
+  float: left;
+  text-align: center;
+  writing-mode: tb-rl;
+}
+
+.card-button-hover-recommend {
+  height: 80rpx;
+  border-radius: 8rpx 0rpx 0rpx 8rpx;
+  /* font-family: PingFang-SC-Medium; */
+  font-size: 28rpx;
+  letter-spacing: -0.68rpx;
+  line-height: 80rpx;
+  float: left;
+  background: #36be7a;
+  color: #fff;
+  padding-left: 30rpx;
+  padding-right: 30rpx;
+}
+
+.card-button-hover {
+  height: 80rpx;
+  border-radius: 8rpx;
+  /* font-family: PingFang-SC-Medium; */
+  font-size: 28rpx;
+  letter-spacing: -0.68rpx;
+  line-height: 80rpx;
+  float: left;
+  background: #36be7a;
+  color: #fff;
+  padding-left: 30rpx;
+  padding-right: 30rpx;
+}
+
+.card-text {
+  background: #ecf8f1;
+  /* font-family: PingFangSC-Regular; */
+  font-size: 24rpx;
+  color: #969696;
+  letter-spacing: -0.27rpx;
+}
+
+.card-confirm {
+  background: #ffcc00;
+  width: 100%;
+  height: 90rpx;
+  position: absolute;
+  bottom: 0;
+  font-family: PingFang-SC-Medium;
+  font-size: 32rpx;
+  color: #fff;
+  letter-spacing: -0.41rpx;
+  line-height: 90rpx;
+  text-align: center;
+}
+
+.card-cover {
+  width: 100%;
+  height: 100%;
+  position: fixed;
+  top: 0px;
+  opacity: 0.8;
+  background-color: #000;
+  /* opacity:0.8; */
+  text-align: center;
+}
+
+.card-box {
+  opacity: 1;
+  width: 587rpx;
+  margin: 30% auto;
+  border-radius: 12rpx;
+  position: absolute;
+  top: 0%;
+  left: 10%;
+}
+
+.cover-banner {
+  width: 587rpx;
+  height: 287rpx;
+}
+
+.card-box-text {
+  /* font-family: PingFangSC-Regular; */
+  font-size: 32rpx;
+  color: #323232;
+  letter-spacing: -0.77rpx;
+  padding: 20rpx;
+}
+
+.card-box-button {
+  height: 100rpx;
+  bottom: 0;
+  /* font-family: PingFangSC-Regular; */
+  font-size: 32rpx;
+  letter-spacing: -0.77rpx;
+  line-height: 100rpx;
+  text-align: center;
+}
+
+.card-box-button-close {
+  background: #eaeaea;
+  color: #787878;
+  width: 50%;
+}
+
+.card-box-button-open {
+  background: #ffcc00;
+  color: #fff;
+  width: 50%;
+}
+
+.display {
+  display: inline;
+}
+
+/*主容器*/
+
+.stepper {
+  width: 150rpx;
+  height: 26px;
+  /*给主容器设一个边框*/
+  /* border: 1px solid #ccc; */
+  /* border-radius: 3px; */
+  margin-left: 570rpx;
+  margin-top: 20rpx;
+  /* margin:0 auto;   */
+  
+}
+
+/*加号和减号*/
+
+.stepper text {
+  width: 49rpx;
+  line-height: 26px;
+  text-align: center;
+  float: left;
+  background-color: #f5f5f5;
+}
+
+/*数值*/
+
+.stepper input {
+  width: 50rpx;
+  height: 26px;
+  float: left;
+  margin: 0 auto;
+  text-align: center;
+  font-size: 12px;
+  /*给中间的input设置左右边框即可*/
+  /* border-left: 1px solid #ccc;
+  border-right: 1px solid #ccc; */
+}
+
+/*普通样式*/
+
+.stepper .normal {
+  color: black;
+}
+
+/*禁用样式*/
+
+.stepper .disabled {
+  color: #ccc;
+}
+
+/* 购买数量 */
+
+.pay-number-font {
+  /*font-family: .PingFang-SC-Regular;*/
+  font-size: 34rpx;
+  color: #323232;
+  letter-spacing: -0.82rpx;
+}
+
+/* 总金额 */
+
+.pay {
+  /* width: 40px; */
+  height: 60rpx;
+  /* margin-left: 0rpx; *//* margin-top: 10rpx; *//* margin:0 auto;   */
+}
+
+/* 选择企业 */
+.weui-cells-copy {
+  position: relative;
+  margin-top: 1.17647059em;
+  background-color: #fff;
+  line-height: 1.41176471;
+  font-size: 17px;
+}
+
+.down-online {
+  width: 720rpx;
+  height: 2rpx;
+  background: lightgray;
+  margin-left: 30rpx;
+}
+
+.weui-cells-copy:after {
+  content: " ";
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  right: 0;
+  height: 1px;
+  border-bottom: 1rpx solid #d9d9d9;
+  color: #d9d9d9;
+}

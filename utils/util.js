@@ -8,7 +8,6 @@ var SERVER_URL = (TESTMODE) ? DEBUG_URL : SERVER_URL;
 ///////七牛相关///////////////////////////////////
 //根据key值获取图片真实链接
 function getImgRealUrl(key_v) {
-  // return "http://twst.isart.me/" + key_v;
   return "http://dsyy.isart.me/" + key_v;  
 }
 
@@ -31,7 +30,7 @@ function qiniuUrlTool(img_url, type) {
       qn_img_url = img_url + "?imageView2/2/w/320/h/165/interlace/1";
       break;
     case "folder_index":        //首页图片
-      qn_img_url = img_url + "?imageView2/2/w/500/q/75/interlace/1";
+      qn_img_url = img_url + "?imageView2/2/w/450/q/75/interlace/1";
       break;
     case "work_step":           //编辑的画夹步骤
       qn_img_url = img_url + "?imageView2/2/w/750/interlace/1";
@@ -44,7 +43,6 @@ function qiniuUrlTool(img_url, type) {
       qn_img_url = img_url + "?imageView2/1/w/750/interlace/1";
       break;
   }
-
   return qn_img_url;
 }
 
@@ -67,14 +65,6 @@ function isLocalImg(img) {
     return true;
   }
   return false;
-}
-
-//跳转到登录页面
-function navigateToLogin(param) {
-  console.log("navigateToLogin" + JSON.stringify(param));
-  wx.navigateTo({
-    url: '/pages/login/login?jsonStr=' + JSON.stringify(param),
-  })
 }
 
 // 获取头像
@@ -133,10 +123,13 @@ function test(param) {
 function getQnToken(param, successCallback, errorCallback) {
   wxRequest(SERVER_URL + '/user/getQiniuToken', param, "GET", successCallback, errorCallback);
 }
-
-//获取用户的getAds
+//获取首页ads及商品
 function getAds(param, successCallback, errorCallback) {
   wxRequest(SERVER_URL + '/home', param, "GET", successCallback, errorCallback);
+}
+//获取办公类、办理类商品列表
+function getProductList(param, successCallback, errorCallback) {
+  wxRequest(SERVER_URL + '/good/list', param, "GET", successCallback, errorCallback);
 }
 //获取资讯政策列表
 function getMessageList(param, successCallback, errorCallback) {
@@ -146,31 +139,26 @@ function getMessageList(param, successCallback, errorCallback) {
 function getMessagegetById(param, successCallback, errorCallback) {
   wxRequest(SERVER_URL + '/zx/getById', param, "GET", successCallback, errorCallback);
 }
-//获取用户的OpenId
+//根据code获取用户openid
 function getOpenId(param, successCallback, errorCallback) {
   wxRequest(SERVER_URL + '/user/getXCXOpenId', param, "GET", successCallback, errorCallback);
 }
-
 //用户登录
 function login(param, successCallback, errorCallback) {
   wxRequest(SERVER_URL + '/user/login', param, "POST", successCallback, errorCallback);
 }
-
 //更新用户信息
 function updateUserInfo(param, successCallback, errorCallback) {
   wxRequest(SERVER_URL + '/user/updateById', param, "POST", successCallback, errorCallback);
 }
-
 //根据id获取商品
 function getOfficePageByOfficeId(param, successCallback, errorCallback) {
   wxRequest(SERVER_URL + '/good/getById', param, "GET", successCallback, errorCallback);
 }
-
 //获取用户录入的企业列表
 function getListByUserId(param, successCallback, errorCallback) {
   wxRequest(SERVER_URL + '/enter/getListByUserId', param, "GET", successCallback, errorCallback);
 }
-
 //更新用户录入的企业信息
 function updateEnterprise(param, successCallback, errorCallback) {
   wxRequest(SERVER_URL + '/enter/edit', param, "POST", successCallback, errorCallback);
@@ -180,26 +168,32 @@ function updateEnterprise(param, successCallback, errorCallback) {
 function getEnterpriseById(param, successCallback, errorCallback) {
   wxRequest(SERVER_URL + '/enter/getById', param, "GET", successCallback, errorCallback);
 }
-
+//删除企业信息
+function deleteEnterpriseById(param, successCallback, errorCallback) {
+  wxRequest(SERVER_URL + '/enter/del', param, "POST", successCallback, errorCallback);
+}
 // 根据id获取用户信息（带token）
 function getByIdWithToken(param, successCallback, errorCallback) {
   wxRequest(SERVER_URL + '/user/getByIdWithToken', param, "GET", successCallback, errorCallback);
 }
-
-function navigateToInput(param) {
-  console.log("navigateToInput" + JSON.stringify(param));
-  wx.navigateTo({
-    url: '/pages/inputText/inputText?jsonStr=' + JSON.stringify(param),
-  })
+// 根据id获取用户信息（不带token）
+function getById(param, successCallback, errorCallback) {
+  wxRequest(SERVER_URL + '/user/getById', param, "GET", successCallback, errorCallback);
 }
-
+// 下单接口
+function postTemPrepay(param, successCallback, errorCallback) {
+  wxRequest(SERVER_URL + '/wxpay/temPrepay', param, "POST", successCallback, errorCallback);
+}
+// 获取用户订单
+function getPayListByUserId(param, successCallback, errorCallback) {
+  wxRequest(SERVER_URL + '/wxpay/getListByUserId', param, "GET", successCallback, errorCallback);
+}
 //返回
 function navigateBack(delta) {
   wx.navigateBack({
     delta: delta
   })
 }
-
 //判断是否有空字符串
 function judgeIsAnyNullStr() {
   if (arguments.length > 0) {
@@ -223,7 +217,6 @@ function getDateStr(str) {
   }
   return str.substr(0, pos)
 }
-
 //格式化日期时间
 function formatTime(date) {
   var year = date.getFullYear()
@@ -232,11 +225,8 @@ function formatTime(date) {
   var hour = date.getHours()
   var minute = date.getMinutes()
   var second = date.getSeconds()
-
   return [year, month, day].map(formatNumber).join('/') + ' ' + [hour, minute, second].map(formatNumber).join(':')
 }
-
-
 //展示toast
 function showToast(msg, img) {
   console.log(img);
@@ -255,7 +245,6 @@ function showToast(msg, img) {
     })
   }
 }
-
 //展示modal
 function showModal(title, content, confirmCallBack, cancelCallBack) {
   wx.showModal({
@@ -272,7 +261,6 @@ function showModal(title, content, confirmCallBack, cancelCallBack) {
     }
   })
 }
-
 //错误modal
 function showErrorModal(msg) {
   wx.showModal({
@@ -287,7 +275,6 @@ function showErrorModal(msg) {
     }
   })
 }
-
 //展示loadding
 function showLoading(msg) {
   if (!wx.canIUse('showLoading')) {
@@ -305,26 +292,12 @@ function hideLoading() {
   }
   wx.hideLoading();
 }
-
-
 //优化字符串输出，如果str为空，则返回r_str
 function conStr(str, r_str) {
   if (judgeIsAnyNullStr(str)) {
     return r_str;
   }
   return str;
-}
-
-
-//鉴权相关
-function convertEnNameToChiName(name) {
-  switch (name) {
-    case "":
-      return "";
-    case "":
-      return "";
-  }
-  return name;
 }
 
 //判断是否为空图
@@ -337,16 +310,6 @@ function judgeIsNullImg(img_url) {
   }
   return false
 }
-
-//判断图书类型是否为空
-function judgeNoBookType(book_type) {
-  if (book_type.indexOf('其他') >= 0) {
-    return true
-  } else {
-    return false
-  }
-}
-
 
 function judgeIsAnyNullStrImp(obj) {
   if (obj.length > 0) {
@@ -507,11 +470,9 @@ module.exports = {
   getAds: getAds,
   login: login,
   updateUserInfo: updateUserInfo,
-  navigateToInput: navigateToInput,
   getDateStr: getDateStr,
   navigateBack: navigateBack,
   judgeIsAnyNullStr: judgeIsAnyNullStr,
-  navigateToLogin: navigateToLogin,
   showLoading: showLoading,
   hideLoading: hideLoading,
   showToast: showToast,
@@ -521,7 +482,6 @@ module.exports = {
   clone: clone,
   randomWord: randomWord,
   judgeIsAnyNullStrImp: judgeIsAnyNullStrImp,
-  judgeNoBookType: judgeNoBookType,
   isLocalImg: isLocalImg,
   getImgRealUrl: getImgRealUrl,
   qiniuUrlTool: qiniuUrlTool,
@@ -539,5 +499,10 @@ module.exports = {
   updateEnterprise: updateEnterprise,
   getQnToken: getQnToken,
   getListByUserId: getListByUserId,
-  getEnterpriseById: getEnterpriseById
+  getEnterpriseById: getEnterpriseById,
+  deleteEnterpriseById: deleteEnterpriseById,
+  postTemPrepay: postTemPrepay,
+  getPayListByUserId: getPayListByUserId,
+  getById: getById,
+  getProductList: getProductList
 }

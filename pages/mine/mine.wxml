@@ -1,0 +1,65 @@
+<view>
+
+  <view class="userinfo-order" style='background-image:url({{bg.img}})'>
+    <view style='height:35rpx'></view>
+    <image class="userinfo-avatar" src="{{userInfo.avatar}}" background-size="cover"></image>
+    <text class="userinfo-nickname">{{userInfo.nick_name}}</text>
+  </view>
+
+  <view class='down-line-5'></view>
+
+  <!-- <view class="order border-bottom-3px" catchtap="toOrder">
+    <text class="myorder-text">我的订单</text>
+    <text class="myorderlook-text">查看全部订单</text>
+    <image class="next-image" src="../../images/fire.png"></image>
+  </view>
+  <view class="line"></view> -->
+
+  <view class="separate"></view>
+  <view class="person-list" style='background-color:white'>
+    <navigator url="/pages/myMessage/myMessage" style='width:100%;' hover-class="navigator-hover">
+      <view class="list-item">
+        <image class="item-image" src="../../images/my1.png"></image>
+        <text class="item-text">我的资料</text>
+      </view>
+    </navigator>
+
+    <view class="person-line"></view>
+
+    <navigator url="/pages/orders/orders" style='width:100%;' hover-class="navigator-hover">
+      <view class="list-item">
+        <image class="item-image" src="../../images/my2.png"></image>
+        <text class="item-text">我的订单</text>
+      </view>
+    </navigator>
+
+    <view class="person-line"></view>
+
+    <navigator url="/pages/enterprise/enterprise" style='width:100%;' hover-class="navigator-hover">
+      <view class="list-item">
+        <image class="item-image" src="../../images/my3.png"></image>
+        <text class="item-text">我的企业</text>
+      </view>
+    </navigator>
+
+    <view class="person-line"></view>
+    <view class="list-item">
+      <image class="item-image" src="../../images/my4.png"></image>
+      <text class="item-text">关于我们</text>
+    </view>
+  </view>
+  <view class="person-line"></view>
+  <!-- <view style='display: flex;flex-direction: row;background-color:green;'>
+    <view style='weight:100rpx'>
+      <image style='width:40rpx;height:40rpx;margin:20rpx;'  src="../../images/资料.png"></image>
+    </view>
+    <view style='margin:auto 0rpx; weight:500rpx'>
+      <text class="item-text">哈哈哈</text>
+    </view>
+    <view style='weight:100rpx'>
+      <image style='width:40rpx;height:40rpx;margin:20rpx;'  src="../../images/资料.png"></image>
+    </view>
+  </view> -->
+
+  <view class="separate"></view>
+</view>

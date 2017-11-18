@@ -1,18 +1,14 @@
 <!--pages/templates/messageInfoTpl/messageInfoTpl.wxml-->
 <!--该模板用于资讯页展示-->
 <template name="twListIndex">
-<!-- <navigator url="/pages/my/my"> -->
   <view class="margin-top-10 tw-div-shadow">
     <view style="margin-left:5px;margin-right:5px;border-radius:5px;" class="white-bg">
       <view style="position:relative;" catchtap="jumpMessageInfo" data-messageid="{{id}}">
         <image src="{{img}}" class="tw-img" mode="aspectFill"></image>
-        <view class="tw-img mask-div-black"></view>
-        <view class="font-size-14 tw-title text-oneline tw-title-div" style="background-image: url('../../images/text_bmask.png');">
-          <text class="margin-left-10" style="margin-right:50px;">{{title}}</text>
-        </view>
-
-        <view class="font-size-10 tw-time text-oneline tw-title-div" style="background-image: url('../../images/text_bmask.png');">
-          <text class="margin-left-10" style="margin-right:50px;">{{created_at}}</text>
+        <!-- <view class="tw-img mask-div-black"></view> -->
+        <!-- <view class="font-size-14 tw-title text-oneline tw-title-div" style="background-image: url('../../images/text_bmask.png');"> -->
+        <view class="font-size-14 tw-title text-oneline tw-title-div" style="background-color:rgba(0,0,0,0.3);border-radius:3px;">
+          <text class="margin-left-10">{{title}}</text>
         </view>
 
       </view>
@@ -20,10 +16,10 @@
         <view class="weui-flex padding-bottom-10">
           <view class="weui-flex__item">
             <view class="placeholder" style="display:flex;align-items:center;">
-              <text class="font-size-16  margin-left-5">{{author}}</text>
+              <text class="font-size-16  margin-left-5 text-oneline">{{author}}</text>
             </view>
           </view>
-          <view class="weui-flex__item">
+          <view style='-webkit-box-flex: 1.5;-webkit-flex: 1.5;flex: 1.5;'>
             <view class="placeholder  margin-top-5" style="display:flex;align-items:center;float:right;">
               <image wx:if="{{flag == 0}}" src="" class="opt-icon-sma margin-right-5"></image>
               <image wx:elif="{{flag == 1}}" src="../../images/fire.png" class="opt-icon-sma margin-right-5"></image>
@@ -31,12 +27,33 @@
 
               <image src="../../images/show_n.png" class="opt-icon-sma margin-right-5"></image>
               <text class="font-size-12  margin-right-10 grey-font">{{show_num}}</text>
-
+              <text class="margin-left-10 text-oneline" style='color:#AAA'>{{created_at}}</text>
             </view>
           </view>
         </view>
       </view>
     </view>
   </view>
-  <!-- </navigator> -->
+</template>
+
+<!--该模板用于首页商品列表展示-->
+<template name="productList">
+  <view class="office margin-top-10 margin-left-30" bindtap="jumpOfficeInfo" data-officeid="{{id}}" hover-class="weui-grid_active">
+    <view class="office-img">
+      <image src="{{img}}" class="office-img-sml" mode="aspectFill"></image>
+    </view>
+
+    <view class="office-info">
+      <view class="text-oneline font-weight office-title-font">{{title}}</view>
+      <view class="text-threeline margin-bottom-5 office-font">{{desc}}</view>
+      <!-- <view style='bottom:40rpx' class="absolute text-oneline margin-top-10 margin-bottom-10 office-font">剩余：{{count}}间</view> -->
+      <view style='position:absolute;bottom:10rpx' class="text-oneline margin-top-5 margin-bottom-5 office-font-blue">剩余：{{count}}间</view>
+    </view>
+    <view class='office-price'>
+      <view class="text-oneline text-right margin-top-30 margin-bottom-10 office-font-price">{{show_price}}</view>
+    </view>
+
+  </view>
+  <view class='product-down-line'></view>
+
 </template>

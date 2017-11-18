@@ -1,59 +1,40 @@
-<import src="../templates/bookInfoTpl/bookInfoTpl.wxml" />
-<import src="../templates/barInfoTpl/barInfoTpl.wxml" />
+<import src="../templates/messageInfoTpl/messageInfoTpl.wxml" />
 
 <view class="page">
   <!-- 轮播图 -->
-    <swiper class='' indicator-dots="true" indicator-color="rgba(255, 255, 255, .3)" indicator-active-color="#FFFFFF" autoplay="true" interval="4000" duration="600" style="height:187px">
-      <block wx:for="{{swipers}}">
-        <swiper-item>
-          <image src="{{item.img}}" class="slide-image" width="750rpx" />
-        </swiper-item>
-      </block>
-    </swiper>
-
-    <!-- 导航按钮 -->
-    <view class="border-bottom">
-      <view class="page__bd">
-        <view class="weui-grids">
-          <!-- <block wx:for="{{grids}}" wx:key="*this"> -->
-            <navigator url="/pages/message/message?myType=2" class="weui-grid-grating" hover-class="weui-grid_active" data-myType='2'>
-              <image class="weui-grid__icon-copy" src="../../images/intro.png" mode="scaleToFill" />
-              <view class="weui-grid__label font-weight:bold">简介</view>
-            </navigator>
-            <navigator url="/pages/message/message?myType=0" class="weui-grid-grating" hover-class="weui-grid_active" data-myType='0'>
-              <image class="weui-grid__icon-copy" src="../../images/refer.png" mode="scaleToFill" />
-              <view class="weui-grid__label font-weight:bold">资讯</view>
-            </navigator>
-            <navigator url="/pages/message/message?myType=1" class="weui-grid-grating" hover-class="weui-grid_active" data-type='1'>
-              <image class="weui-grid__icon-copy" src="../../images/policy.png" mode="scaleToFill" />
-              <view class="weui-grid__label font-weight:bold">政策</view>
-            </navigator>
-          <!-- </block> -->
-        </view>
-      </view>
-    </view>
-
-    <!-- 商品列表 -->
-    <block wx:for="{{productInfo}}">
-        <view class="office border-bottom margin-top-10 margin-left-2" bindtap="jumpOfficeInfo" data-officeid="{{item.id}}">
-          <view class="office-img">
-            <image src="{{item.img}}" class="office-img-sml" mode="aspectFill"></image>
-          </view>
-
-          <view class="office-info">
-            <view class="text-oneline font-weight margin-bottom-5 office-title-font">{{item.title}}</view>
-            <view class="margin-top-5 margin-bottom-5 office-font">{{item.desc}}</view>
-            <view style='bottom:60rpx' class="absolute text-oneline margin-top-10 margin-bottom-10 office-font">剩余：{{item.count}}间</view>
-            <view wx:if="{{item.type == 0}}" style='position:absolute;bottom:10rpx' class="text-oneline margin-top-5 margin-bottom-5 office-font-blue">办公类商品</view>
-            <view wx:elif="{{item.type == 1}}" class="text-oneline margin-top-5 margin-bottom-5 office-font-blue">办理类商品</view>
-          </view>
-          
-          <view class='office-price'>
-            <view class="text-oneline text-right margin-top-50 margin-bottom-10 office-font-price">{{item.show_price}}</view>
-            <view wx:if="{{item.flag == 0}}" class='margin-top-57 text-right'>不推荐</view>
-            <view wx:elif="{{item.flag == 1}}" class='margin-top-57 text-right office-font-red'>推荐</view>
-          </view>
-
-        </view>
+  <swiper class='' indicator-dots="true" indicator-color="rgba(255, 255, 255, .3)" indicator-active-color="#FFFFFF" autoplay="true" interval="4000" duration="600" style="height:{{systemInfo.windowWidth/2}}px">
+    <block wx:for="{{swipers}}">
+      <swiper-item>
+        <image src="{{item.img}}" class="slide-image" width="750rpx" />
+      </swiper-item>
     </block>
+  </swiper>
+  <!-- 导航按钮 -->
+  <view class="page__bd">
+    <view class="weui-grids">
+      <navigator url="/pages/message/message?myType=2" class="weui-grid-grating" hover-class="weui-grid_active" data-myType='2'>
+        <image class="weui-grid__icon-copy" src="../../images/intro.png" mode="scaleToFill" />
+        <view class="weui-grid__label">简介</view>
+      </navigator>
+      <navigator url="/pages/message/message?myType=0" class="weui-grid-grating" hover-class="weui-grid_active" data-myType='0'>
+        <image class="weui-grid__icon-copy" src="../../images/refer.png" mode="scaleToFill" />
+        <view class="weui-grid__label">资讯</view>
+      </navigator>
+      <navigator url="/pages/message/message?myType=1" class="weui-grid-grating" hover-class="weui-grid_active" data-type='1'>
+        <image class="weui-grid__icon-copy" src="../../images/policy.png" mode="scaleToFill" />
+        <view class="weui-grid__label">政策</view>
+      </navigator>
+    </view>
+  </view>
+  <view class='down-line-5'></view>
+
+  <view class="line-text font-size-14" style='line-height:30rpx;'>
+    猜您喜欢
+  </view>
+
+  <!-- 办理商品列表 -->
+  <block wx:for="{{productInfo}}" >
+    <template is="productList" data="{{...item}}" />
+  </block>
+
 </view>

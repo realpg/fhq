@@ -1,13 +1,7 @@
 // pages/manage/manage.js
 Page({
   data: {
-    icon: [
-      { img: "/images/mymy.png", title: "工商注册", url: "/pages/product/product" },
-      { img: "/images/mymy.png", title: "代理会计", url: "/pages/product/product" },
-      { img: "/images/mymy.png", title: "税务登记", url: "/pages/product/product" },
-      { img: "/images/mymy.png", title: "会议室申请", url: "/pages/product/product" },
-      { img: "/images/mymy.png", title: "服务项目", url: "/pages/product/product" },
-    ],
+    
   },
   onLoad: function (options) {
     

@@ -43,6 +43,7 @@ Page({
   },
   onLoad: function (options) {
     vm = this
+
     if (options.id) {
       var param = {
         id: options.id
@@ -55,16 +56,16 @@ Page({
         var files2 = []
         var files3 = []
         if (res.data.ret.lice_img !== null) {
-        files.push(res.data.ret.lice_img)
+          files.push(res.data.ret.lice_img)
         }
-        if (res.data.ret.tax_img!==null){
-        files1.push(res.data.ret.tax_img)
+        if (res.data.ret.tax_img !== null) {
+          files1.push(res.data.ret.tax_img)
         }
         if (res.data.ret.owner_card1 !== null) {
-        files2.push(res.data.ret.owner_card1)
+          files2.push(res.data.ret.owner_card1)
         }
         if (res.data.ret.owner_card2 !== null) {
-        files3.push(res.data.ret.owner_card2)
+          files3.push(res.data.ret.owner_card2)
         }
         console.log("test" + JSON.stringify(files))
         vm.setData({
@@ -75,10 +76,11 @@ Page({
           'test[4].placeholder': res.data.ret.owner,
           'test[5].placeholder': res.data.ret.owner_no,
           'test[6].placeholder': res.data.ret.owner_tel,
-           files: files,
-           files1: files1,
-           files2: files2,
-           files3: files3,
+          files: files,
+          files1: files1,
+          files2: files2,
+          files3: files3,
+          id: options.id
         })
       }, null)
     }
@@ -321,18 +323,35 @@ Page({
       idNumber: idNumber,
       phone: phone
     })
-    var param = {
-      name: vm.data.enterpriseName,//企业名称
-      lice_img: files0,//营业执照
-      address: vm.data.address,//地址
-      code: vm.data.postcode,//邮编
-      tax_code: vm.data.taxNum,//税号
-      tax_img: files1,//税务登记证
-      owner: vm.data.name,//法人姓名
-      owner_card1: files2,//法人身份证正面
-      owner_card2: files3,//法人身份证反面
-      owner_no: vm.data.idNumber,//法人身份证号
-      owner_tel: vm.data.phone,//法人电话
+    if (vm.data.id == "") {
+      var param = {
+        name: vm.data.enterpriseName,//企业名称
+        lice_img: files0,//营业执照
+        address: vm.data.address,//地址
+        code: vm.data.postcode,//邮编
+        tax_code: vm.data.taxNum,//税号
+        tax_img: files1,//税务登记证
+        owner: vm.data.name,//法人姓名
+        owner_card1: files2,//法人身份证正面
+        owner_card2: files3,//法人身份证反面
+        owner_no: vm.data.idNumber,//法人身份证号
+        owner_tel: vm.data.phone,//法人电话
+      }
+    } else {
+      var param = {
+        id: vm.data.id,
+        name: vm.data.enterpriseName,//企业名称
+        lice_img: files0,//营业执照
+        address: vm.data.address,//地址
+        code: vm.data.postcode,//邮编
+        tax_code: vm.data.taxNum,//税号
+        tax_img: files1,//税务登记证
+        owner: vm.data.name,//法人姓名
+        owner_card1: files2,//法人身份证正面
+        owner_card2: files3,//法人身份证反面
+        owner_no: vm.data.idNumber,//法人身份证号
+        owner_tel: vm.data.phone,//法人电话
+      }
     }
     util.updateEnterprise(param, function (res) {
       console.log("更新企业" + JSON.stringify(res))
@@ -344,7 +363,7 @@ Page({
           success: function (res) {
             if (res.confirm) {
               wx.navigateTo({
-                // url: "/pages/read/read"
+                url: '/pages/enterprise/enterprise'
               })
             }
           }
@@ -363,7 +382,9 @@ Page({
         })
       }
     })
-
+    // wx.navigateTo({
+    //   url: '/pages/product/product?officeid=' + officeid
+    // })
   },
   // formReset: function () {
   //   console.log('form发生了reset事件')

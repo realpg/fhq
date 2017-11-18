@@ -1,16 +1,20 @@
 var util = require('../../utils/util.js')
-
 //获取应用实例
 var app = getApp()
-
 var vm = null
-
+var sliderWidth = 96; // 需要设置slider的宽度，用于计算中间位置
 Page({
   data: {
     systemInfo: {},
     swipers: [],  //广告图信息
-    productInfo:[],//商品列表
-    productUrl: {url: "/pages/product/product"},
+    productInfo: [],//商品列表
+    productUrl: { url: "/pages/product/product" },
+    banli: [],
+
+    tabs: ["办公类商品", "办理类商品"],
+    activeIndex: 0,
+    sliderOffset: 0,
+    sliderLeft: 0
   },
   //加载
   onShow: function () {
@@ -19,30 +23,44 @@ Page({
     //初始化sysInfo
     app.getSystemInfo(function (res) {
       console.log("getSystemInfo:" + JSON.stringify(res));
+
       vm.setData({
+        sliderLeft: (res.windowWidth / vm.data.tabs.length - sliderWidth) / 2,
+        sliderOffset: res.windowWidth / vm.data.tabs.length * vm.data.activeIndex,
         systemInfo: res
       })
     })
     vm.setADSwiper()
+    vm.getProductList()
+  },
+  //获取商品信息
+  getProductList: function () {
+    var param = ({
+      type: '1',
+      page: '0'
+    })
+    util.getProductList(param, function (res) {
+      console.log("办理类商品" + JSON.stringify(res.data.ret.data))
+      vm.setData({
+        banli: res.data.ret.data
+      })
+    }, null)
+  },
+  //tab切换
+  tabClick: function (e) {
+    // console.log(JSON.stringify(e))
+    this.setData({
+      sliderOffset: e.currentTarget.offsetLeft,
+      activeIndex: e.currentTarget.id
+    });
   },
   // 根据商品id获取商品
   jumpOfficeInfo: function (e) {
-    // console.log(JSON.stringify("officeid:" + JSON.stringify(e.currentTarget.dataset.officeid)))
     var officeid = JSON.stringify(e.currentTarget.dataset.officeid)
     wx.navigateTo({
       url: '/pages/product/product?officeid=' + officeid
     })
   },
-
-  //根据图书id获取图书
-  // jumpBookInfo: function (e) {
-  //   console.log(JSON.stringify("bookid:" + e.currentTarget.dataset.bookid))
-  //   var bookid = e.currentTarget.dataset.bookid
-  //   wx.navigateTo({
-  //     url: '/pages/bookpage/bookpage?bookid=' + bookid
-  //   })
-  // },
-
   // 获取广告图片
   setADSwiper: function () {
     util.getAds({}, function (ret) {
@@ -58,25 +76,14 @@ Page({
 
         var productObj = ret.data.ret.good_infos;
         console.log("productInfo" + JSON.stringify(productObj));
-        // for (var i = 0; i < productObj.length; i++) {
-        //   productObj[i].img = util.qiniuUrlTool(productObj[i].img, "top_ad")
-        // }
         vm.setData({
           productInfo: productObj
         });
-
       }
     }, null);
   },
 
-  //根据书吧id获取书吧页面
-  bardetail: function (e) {
-    console.log(JSON.stringify("barid:" + e.currentTarget.dataset.barid))
-    var barid = e.currentTarget.dataset.barid
-    wx.navigateTo({
-      url: '/pages/barpage/barpage?barid=' + barid
-    })
-  },
+
   //点击跳转搜索页面
   clickSearch: function (e) {
     wx.navigateTo({
@@ -116,5 +123,5 @@ Page({
       }
     }
   },
-  
+
 })

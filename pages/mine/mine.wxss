@@ -1,0 +1,148 @@
+/* pages/my/my.wxss */
+
+page {
+  display: block;
+  /* min-height: 300px; */
+  background-color: #f4f4f4;
+}
+
+.my-background {
+  width: 100%;
+  height: 280rpx;
+}
+
+.my-text {
+  width: 100%;
+  text-align: center;
+}
+
+.my-photo {
+  width: 104rpx;
+  height: 104rpx;
+  border-radius: 100%;
+  margin-top: 54rpx;
+}
+
+.my-name {
+  /*font-family: PingFangSC-Regular;*/
+  font-size: 32rpx;
+  color: #fff;
+  letter-spacing: -0.36rpx;
+}
+
+/* copy下单 */
+
+.userinfo-order {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  height: 300rpx;
+}
+
+.account-bg {
+  width: 100%;
+  height: 150rpx;
+}
+
+/* .userinfo-avatar {
+  width: 108rpx;
+  height: 108rpx;
+  margin: 20rpx;
+  border-radius: 50%;
+} */
+
+.userinfo-avatar {
+  width: 140rpx;
+  height: 140rpx;
+  margin: 20rpx;
+  border-radius: 50%;
+}
+
+.userinfo-nickname {
+  color: black;
+}
+
+/* 订单 */
+
+.order {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  width: 100%;
+  height: 90rpx;
+}
+
+.myorder-text {
+  font-size: 30rpx;
+  color: gray;
+  margin: 20rpx;
+  width: 40%;
+}
+
+.myorderlook-text {
+  font-size: 30rpx;
+  color: gray;
+  position: relative;
+  right: 20rpx;
+  width: 60%;
+  text-align: right;
+}
+
+.next-image {
+  width: 20rpx;
+  height: 25rpx;
+  position: relative;
+  right: 10rpx;
+}
+
+.nav-item {
+  width: 40rpx;
+  height: 40rpx;
+  margin: 5rpx;
+}
+
+.nav-item text {
+  margin-top: 20rpx;
+  font-size: 25rpx;
+  color: gray;
+}
+
+/* 列表 */
+
+.person-list {
+  display: flex;
+  flex-direction: column;
+  align-items: left;
+}
+
+.list-item {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  height: 90rpx;
+}
+
+.item-image {
+  width: 40rpx;
+  height: 40rpx;
+  margin: 20rpx;
+}
+
+.item-text {
+  color: gray;
+  font-size: 30rpx;
+  margin-left: 20rpx;
+}
+
+.person-line {
+  width: 660rpx;
+  height: 2rpx;
+  background: lightgray;
+  margin-left: 90rpx;
+}
+
+/* ------ */
+
+.navigator-hover {
+  color: blue;
+}

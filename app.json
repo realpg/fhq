@@ -1,6 +1,8 @@
 {
   "pages": [
+    "pages/updateEnterprise/updateEnterprise",
     "pages/index/index",
+    "pages/downOrders/downOrders",
     "pages/enterprise/enterprise",
     "pages/mine/mine",
     "pages/myMessage/myMessage",
@@ -8,13 +10,12 @@
     "pages/test/test",
     "pages/alterMyMessage/alterMyMessage",
     "pages/orders/orders",
-    "pages/downOrders/downOrders",
-    "pages/updateEnterprise/updateEnterprise",
     "pages/article/article",
     "pages/templates/messageInfoTpl/messageInfoTpl",
     "pages/message/message",
     "pages/manage/manage",
-    "pages/pay/pay"
+    "pages/pay/pay",
+    "pages/templates/addressTem/addressTem"
   ],
   "window": {
     "backgroundTextStyle": "light",

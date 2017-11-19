@@ -15,7 +15,7 @@ page {
 
 .page {
   background-color: #f8f8f8 !important;
-  height: 100%;
+  /* height: 100%; */
 }
 
 .page__title {

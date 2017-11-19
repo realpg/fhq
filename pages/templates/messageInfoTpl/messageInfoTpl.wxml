@@ -38,7 +38,7 @@
 
 <!--该模板用于首页商品列表展示-->
 <template name="productList">
-  <view class="office margin-top-10 margin-left-30" bindtap="jumpOfficeInfo" data-officeid="{{id}}" hover-class="weui-grid_active">
+  <view class="office margin-top-10 margin-left-30" bindtap="jumpOfficeInfo" data-officeid="{{id}}">
     <view class="office-img">
       <image src="{{img}}" class="office-img-sml" mode="aspectFill"></image>
     </view>

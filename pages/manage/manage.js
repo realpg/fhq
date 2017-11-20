@@ -1,17 +1,37 @@
 // pages/manage/manage.js
+var util = require('../../utils/util.js')
+var vm = null
 Page({
   data: {
-    
+    productList: [],
+    page: ''
   },
   onLoad: function (options) {
-    
+    vm = this
+    vm.setData({
+      page: 1
+    })
+  },
+
+  getProductList: function () {
+    var param = {
+      'type': 1,
+      'page': vm.data.page
+    }
+    util.getProductList(param, function (res) {
+      console.log("办理数据" + JSON.stringify(res))
+      var productList = res.data.ret.data
+      vm.setData({
+        productList: productList
+      })
+    }, null)
   },
 
   /**
    * 生命周期函数--监听页面初次渲染完成
    */
   onReady: function () {
-
+    vm.getProductList()
   },
 
   /**

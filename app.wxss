@@ -550,7 +550,7 @@ page {
 }
 
 .office-img-sml {
-  width: 230rpx;
+  width: 240rpx;
   /* height: 210rpx; */
   height: 180rpx;
   border-radius: 10rpx;

@@ -2,7 +2,6 @@ var util = require('../../utils/util.js')
 //获取应用实例
 var app = getApp()
 var vm = null
-var sliderWidth = 96; // 需要设置slider的宽度，用于计算中间位置
 Page({
   data: {
     systemInfo: {},
@@ -10,11 +9,6 @@ Page({
     productInfo: [],//商品列表
     productUrl: { url: "/pages/product/product" },
     banli: [],
-
-    tabs: ["办公类商品", "办理类商品"],
-    activeIndex: 0,
-    sliderOffset: 0,
-    sliderLeft: 0
   },
   //加载
   onShow: function () {
@@ -25,8 +19,6 @@ Page({
       console.log("getSystemInfo:" + JSON.stringify(res));
 
       vm.setData({
-        sliderLeft: (res.windowWidth / vm.data.tabs.length - sliderWidth) / 2,
-        sliderOffset: res.windowWidth / vm.data.tabs.length * vm.data.activeIndex,
         systemInfo: res
       })
     })
@@ -45,14 +37,6 @@ Page({
         banli: res.data.ret.data
       })
     }, null)
-  },
-  //tab切换
-  tabClick: function (e) {
-    // console.log(JSON.stringify(e))
-    this.setData({
-      sliderOffset: e.currentTarget.offsetLeft,
-      activeIndex: e.currentTarget.id
-    });
   },
   // 根据商品id获取商品
   jumpOfficeInfo: function (e) {
@@ -82,46 +66,4 @@ Page({
       }
     }, null);
   },
-
-
-  //点击跳转搜索页面
-  clickSearch: function (e) {
-    wx.navigateTo({
-      url: '/pages/search/search',
-    })
-  },
-  seeMoreBook: function (e) {
-    vm.setData({
-      currentNavbar: 1
-    })
-    if (vm.needLoadNewDataAfterSwiper()) {
-      vm.loadMoreDatas()
-    }
-  },
-  seeMoreBar: function (e) {
-    vm.setData({
-      currentNavbar: 2
-    })
-    if (vm.needLoadNewDataAfterSwiper()) {
-      vm.loadMoreDatas()
-    }
-  },
-
-  onShareAppMessage: function (res) {
-    if (res.from === 'button') {
-      // 来自页面内转发按钮
-      console.log(res.target)
-    }
-    return {
-      title: navigationBarTitleText,
-      path: '/pages/index/index',
-      success: function (res) {
-
-      },
-      fail: function (res) {
-
-      }
-    }
-  },
-
 })

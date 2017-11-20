@@ -1,7 +1,7 @@
 {
   "pages": [
-    "pages/manage/manage",
     "pages/index/index",
+    "pages/manage/manage",
     "pages/updateEnterprise/updateEnterprise",
     "pages/downOrders/downOrders",
     "pages/enterprise/enterprise",

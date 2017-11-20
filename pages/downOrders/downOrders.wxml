@@ -2,27 +2,7 @@
 <import src="../templates/messageInfoTpl/messageInfoTpl.wxml" />
 
 <view class="card-bg">
-  <!-- <view class="office border-bottom-3px margin-top-10 margin-left-2" bindtap="jumpOfficeInfo" data-officeid="{{good_info.id}}">
-    <view class="office-img">
-      <image src="{{good_info.img}}" class="office-img-sml" mode="aspectFill"></image>
-    </view>
-    <view class="office-info">
-      <view class="text-oneline font-weight margin-bottom-5 office-title-font">{{good_info.title}}</view>
-      <view class="margin-top-5 margin-bottom-5 office-font">{{good_info.desc}}</view>
-      <view style='bottom:60rpx' class="absolute text-oneline margin-top-10 margin-bottom-10 office-font">剩余：{{good_info.count}}间</view>
-      <view wx:if="{{good_info.type == 0}}" style='position:absolute;bottom:10rpx' class="text-oneline margin-top-5 margin-bottom-5 office-font-blue">办公类商品</view>
-      <view wx:elif="{{good_info.type == 1}}" class="text-oneline margin-top-5 margin-bottom-5 office-font-blue">办理类商品</view>
-    </view>
-    <view class='office-price'>
-      <view class="text-oneline text-right margin-top-50 margin-bottom-10 office-font-price">{{good_info.show_price}}</view>
-      <view wx:if="{{good_info.flag == 0}}" class='margin-top-57 text-right'>不推荐</view>
-      <view wx:elif="{{good_info.flag == 1}}" class='margin-top-57 text-right office-font-red'>推荐</view>
-    </view>
-  </view> -->
-
   <template is="productList" data="{{...good_info}}" />
-
-
   <view class='border-bottom-3px' style=' padding-bottom:25rpx;'>
     <view class="stepper" style='position: relative;'>
       <view style='position: absolute; width:100px; height:100%; left:-560rpx;text-align:center' class='pay-number-font'>购买数量：</view>

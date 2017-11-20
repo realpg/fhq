@@ -137,7 +137,7 @@ page {
 .person-line {
   width: 660rpx;
   height: 2rpx;
-  background: lightgray;
+  background: #e6e6e6;
   margin-left: 90rpx;
 }
 

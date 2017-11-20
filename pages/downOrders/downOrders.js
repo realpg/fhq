@@ -140,6 +140,12 @@ Page({
     })
   },
 
+  clickClose: function(e) {
+    wx.navigateBack({
+      delta: 1
+    })
+  },
+
   addEnterprise: function (e) {
     wx.navigateTo({
       url: '/pages/updateEnterprise/updateEnterprise'

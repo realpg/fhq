@@ -1,5 +1,5 @@
 <!--pages/product/product.wxml-->
-<view class="book-bg">
+<view class="office-bg">
   <view style='weight:100%;text-align: center;margin-top:20rpx'>
     <image class="image_frame" src="{{good_info.img}}" mode="aspectFill"></image>
   </view>

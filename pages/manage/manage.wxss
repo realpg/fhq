@@ -3,3 +3,25 @@ page {
   display: block;
   background-color: #f4f4f4;
 }
+
+.image_frame {
+  margin: 0 auto;
+  border-radius: 10rpx;
+  width: 700rpx;
+  height: 374rpx;
+}
+
+ .tw-title {
+  position: absolute;
+  top: 48rpx;
+  left: 26rpx;
+  color: #fff;
+  max-width: 340px;
+} 
+
+.tw-title-div {
+  display: inline-flex;
+  background-repeat: no-repeat;
+  background-size: 100% 100%;
+  -moz-background-size: 100% 100%;
+}

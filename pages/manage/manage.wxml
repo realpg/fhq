@@ -1,51 +1,11 @@
 <!--pages/manage/manage.wxml-->
-   <view class="weui-cells weui-cells_after-title">
-    <navigator url="/pages/product/product" class="weui-cell weui-cell_access" hover-class="weui-cell_active">
-      <view class="weui-cell__hd">
-        <image src="../../images/mymy.png" style="margin-right: 5px;vertical-align: middle;width:20px; height: 20px;"></image>
+<block wx:for="{{productList}}">
+  <view style='position:relative;height:400rpx;background-color:#f4f4f4;' catchtap="jumpMessageInfo" data-messageid="{{id}}">
+    <view style='weight:100%;text-align: center;margin-top:20rpx'>
+      <image class="image_frame" src="http://twst.isart.me/o_1bssc476khrdh9of9m11731kh79.jpg" mode="aspectFill"></image>
+      <view class='font-size-14 text-oneline tw-title-div' style='background-color:rgba(0,0,0,0.3);position: absolute;top: 300rpx;left: 26rpx;color: #fff;width: 700rpx;border-radius: 0 0 6rpx 6rpx;'>
+        <text style='line-height:74rpx;padding-left:30rpx;'>{{item.title}}</text>
       </view>
-      <view class="weui-cell__bd">工商注册</view>
-      <view class="weui-cell__ft weui-cell__ft_in-access"></view>
-    </navigator>
+    </view>
   </view>
-<view class="weui-cells weui-cells_after-title">
-    <navigator url="/pages/product/product" class="weui-cell weui-cell_access" hover-class="weui-cell_active">
-      <view class="weui-cell__hd">
-        <image src="../../images/mymy.png" style="margin-right: 5px;vertical-align: middle;width:20px; height: 20px;"></image>
-      </view>
-      <view class="weui-cell__bd">代理会计</view>
-      <view class="weui-cell__ft weui-cell__ft_in-access"></view>
-    </navigator>
-  </view>
-
-  <view class="weui-cells weui-cells_after-title">
-    <navigator url="/pages/product/product" class="weui-cell weui-cell_access" hover-class="weui-cell_active">
-      <view class="weui-cell__hd">
-        <image src="../../images/mymy.png" style="margin-right: 5px;vertical-align: middle;width:20px; height: 20px;"></image>
-      </view>
-      <view class="weui-cell__bd">税务登记</view>
-      <view class="weui-cell__ft weui-cell__ft_in-access"></view>
-    </navigator>
-  </view>
-
-   <view class="weui-cells weui-cells_after-title">
-    <navigator url="/pages/product/product" class="weui-cell weui-cell_access" hover-class="weui-cell_active">
-      <view class="weui-cell__hd">
-        <image src="../../images/mymy.png" style="margin-right: 5px;vertical-align: middle;width:20px; height: 20px;"></image>
-      </view>
-      <view class="weui-cell__bd">会议室申请</view>
-      <view class="weui-cell__ft weui-cell__ft_in-access"></view>
-    </navigator>
-  </view>
-
-   <view class="weui-cells weui-cells_after-title">
-    <navigator url="/pages/product/product" class="weui-cell weui-cell_access" hover-class="weui-cell_active">
-      <view class="weui-cell__hd">
-        <image src="../../images/mymy.png" style="margin-right: 5px;vertical-align: middle;width:20px; height: 20px;"></image>
-      </view>
-      <view class="weui-cell__bd">服务项目</view>
-      <view class="weui-cell__ft weui-cell__ft_in-access"></view>
-    </navigator>
-  </view> 
-
-  <view></view>
+</block>

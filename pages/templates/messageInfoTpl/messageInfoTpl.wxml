@@ -62,7 +62,7 @@
       <view style='display:flex;flex-direction:row;align-items:center;'>
         <image src='../../images/address.png' style='width:25rpx;height:25rpx;'></image>
         <view class="text-oneline margin-bottom-5 office-font" style='margin-left:10rpx;'>价格：</view>
-        <view style='color:#ffcc00;'>{{show_price}}</view>
+        <view style='color:#ffcc00;' class='margin-bottom-5'>{{show_price}}</view>
       </view>
       <!-- <view style='position:absolute;bottom:10rpx' class="text-oneline margin-top-5 margin-bottom-5 office-font">剩余：{{count}}间</view> -->
     </view>

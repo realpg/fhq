@@ -118,6 +118,6 @@
 .product-down-line {
   width: 720rpx;
   height: 2rpx;
-  background: lightgray;
+  background: #e6e6e6;
   margin-left: 30rpx;
 }

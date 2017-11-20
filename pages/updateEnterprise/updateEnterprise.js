@@ -51,7 +51,7 @@ Page({
       timingFunction: 'ease',
     })
     this.animation = animation
-    animation.height(1332 + 'rpx').step()
+    animation.height(1334 + 'rpx').step()
     this.setData({
       animationData: animation.export()
     })

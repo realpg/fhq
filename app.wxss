@@ -539,7 +539,7 @@ page {
 .office-info {
   padding-left: 30rpx;
   float: left;
-  width: 270rpx;
+  width: 400rpx;
   position: relative;
 }
 
@@ -552,14 +552,14 @@ page {
 .office-img-sml {
   width: 230rpx;
   /* height: 210rpx; */
-  height: 190rpx;
+  height: 180rpx;
   border-radius: 10rpx;
 }
 
 .office {
   display: flex;
   flex-direction: row;
-  padding: 10rpx 0rpx;
+  /* padding: 10rpx 0rpx; */
   /* border-bottom: 1px rgba(255, 255, 255, 0.2) solid;   */
 }
 

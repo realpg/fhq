@@ -109,8 +109,9 @@
 }
 
 .office-font{
-  font-size: 22rpx;
+  font-size: 26rpx;
   color: #AAA;
+  line-height: 40rpx;
 }
 
 /* 下边框  */

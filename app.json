@@ -1,7 +1,8 @@
 {
   "pages": [
-    "pages/updateEnterprise/updateEnterprise",
+    "pages/manage/manage",
     "pages/index/index",
+    "pages/updateEnterprise/updateEnterprise",
     "pages/downOrders/downOrders",
     "pages/enterprise/enterprise",
     "pages/mine/mine",
@@ -13,7 +14,6 @@
     "pages/article/article",
     "pages/templates/messageInfoTpl/messageInfoTpl",
     "pages/message/message",
-    "pages/manage/manage",
     "pages/pay/pay",
     "pages/templates/addressTem/addressTem"
   ],

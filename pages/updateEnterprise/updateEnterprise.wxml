@@ -198,7 +198,7 @@
     <!-- 提交按钮 -->
     <view class="page__bd">
       <view class="weui-btn-area">
-        <button class="weui-btn" formType="submit" type="primary" bindtap="showTopTips">确定</button>
+        <button class="weui-btn" style='background-color:#ffcc00' formType="submit" type="primary" bindtap="showTopTips">确定</button>
       </view>
     </view>
   </view>

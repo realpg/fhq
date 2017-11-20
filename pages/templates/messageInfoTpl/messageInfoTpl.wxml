@@ -38,20 +38,39 @@
 
 <!--该模板用于首页商品列表展示-->
 <template name="productList">
-  <view class="office margin-top-10 margin-left-30" bindtap="jumpOfficeInfo" data-officeid="{{id}}">
-    <view class="office-img">
+  <view class="office margin-top-5 margin-left-30" style='margin-bottom:0rpx;' bindtap="jumpOfficeInfo" data-officeid="{{id}}">
+    <view class="office-img" style='padding-top:5rpx;'>
       <image src="{{img}}" class="office-img-sml" mode="aspectFill"></image>
     </view>
 
     <view class="office-info">
-      <view class="text-oneline font-weight office-title-font">{{title}}</view>
-      <view class="text-threeline margin-bottom-5 office-font">{{desc}}</view>
-      <!-- <view style='bottom:40rpx' class="absolute text-oneline margin-top-10 margin-bottom-10 office-font">剩余：{{count}}间</view> -->
-      <view style='position:absolute;bottom:10rpx' class="text-oneline margin-top-5 margin-bottom-5 office-font-blue">剩余：{{count}}间</view>
+      <view class="text-oneline font-weight office-title-font" style='margin-left:10rpx'>{{title}}</view>
+      <!-- <view style='display:flex;flex-direction:row;align-items:center;width:100%;'>
+        <view style='width:30rpx;'>
+          <image src='../../images/address.png' style='width:25rpx;height:25rpx;margin-top:10rpx;'></image>
+        </view>
+        <view class="text-oneline margin-bottom-5 office-font" style='margin-left:10rpx;'>{{desc}}</view>
+      </view> -->
+      <view style='display:flex;flex-direction:row;align-items:center;margin-top:0rpx;'>
+        <image src='../../images/address.png' style='width:25rpx;height:25rpx;'></image>
+        <view class="text-oneline margin-bottom-5 office-font" style='margin-left:10rpx;'>金卡路62号</view>
+      </view>
+      <view style='display:flex;flex-direction:row;align-items:center;width:100%;'>
+        <image src='../../images/address.png' style='width:25rpx;height:25rpx;'></image>
+        <view class="text-oneline margin-bottom-5 office-font" style='margin-left:10rpx;'>剩余：{{count}}间</view>
+      </view>
+      <view style='display:flex;flex-direction:row;align-items:center;'>
+        <image src='../../images/address.png' style='width:25rpx;height:25rpx;'></image>
+        <view class="text-oneline margin-bottom-5 office-font" style='margin-left:10rpx;'>价格：</view>
+        <view style='color:#ffcc00;'>{{show_price}}</view>
+      </view>
+      <!-- <view style='position:absolute;bottom:10rpx' class="text-oneline margin-top-5 margin-bottom-5 office-font">剩余：{{count}}间</view> -->
     </view>
-    <view class='office-price'>
+
+
+    <!-- <view class='office-price'>
       <view class="text-oneline text-right margin-top-30 margin-bottom-10 office-font-price">{{show_price}}</view>
-    </view>
+    </view> -->
 
   </view>
   <view class='product-down-line'></view>

@@ -2,7 +2,7 @@
 <!--该模板用于资讯页展示-->
 <template name="twListIndex">
   <view class="margin-top-10 tw-div-shadow">
-    <view style="margin-left:5px;margin-right:5px;border-radius:5px;" class="white-bg">
+    <view style="margin-left:10px;margin-right:10px;border-radius:5px;" class="white-bg">
       <view style="position:relative;" catchtap="jumpMessageInfo" data-messageid="{{id}}">
         <image src="{{img}}" class="tw-img" mode="aspectFill"></image>
         <!-- <view class="tw-img mask-div-black"></view> -->
@@ -38,33 +38,25 @@
 
 <!--该模板用于首页商品列表展示-->
 <template name="productList">
-  <view class="office margin-top-5 margin-left-30" style='margin-bottom:0rpx;' bindtap="jumpOfficeInfo" data-officeid="{{id}}">
+  <view class="office margin-top-5 margin-left-30" style='margin-bottom:0rpx;padding:10rpx 0' bindtap="jumpOfficeInfo" data-officeid="{{id}}">
     <view class="office-img" style='padding-top:5rpx;'>
       <image src="{{img}}" class="office-img-sml" mode="aspectFill"></image>
     </view>
 
     <view class="office-info">
-      <view class="text-oneline font-weight office-title-font" style='margin-left:10rpx'>{{title}}</view>
-      <!-- <view style='display:flex;flex-direction:row;align-items:center;width:100%;'>
-        <view style='width:30rpx;'>
-          <image src='../../images/address.png' style='width:25rpx;height:25rpx;margin-top:10rpx;'></image>
-        </view>
-        <view class="text-oneline margin-bottom-5 office-font" style='margin-left:10rpx;'>{{desc}}</view>
-      </view> -->
       <view style='display:flex;flex-direction:row;align-items:center;margin-top:0rpx;'>
-        <image src='../../images/address.png' style='width:25rpx;height:25rpx;'></image>
-        <view class="text-oneline margin-bottom-5 office-font" style='margin-left:10rpx;'>金卡路62号</view>
+
+        <view class="text-oneline font-weight office-title-font margin-top-5" style='margin-left:10rpx;float:left; width:300rpx;'>{{title}}</view>
+        <view style='text-align:right;float:right; width:150rpx;text-align:right;color:#ffcc00;font-size:30rpx;margin-top:0rpx;'>{{show_price}}</view>
       </view>
-      <view style='display:flex;flex-direction:row;align-items:center;width:100%;'>
-        <image src='../../images/address.png' style='width:25rpx;height:25rpx;'></image>
-        <view class="text-oneline margin-bottom-5 office-font" style='margin-left:10rpx;'>剩余：{{count}}间</view>
+
+      <view class="text-oneline margin-bottom-5 office-font margin-top-5" style='margin-left:10rpx;'>{{desc}}</view>
+
+      <view style='display:flex;flex-direction:row;align-items:center;margin-top:0rpx;'>
+        <image src='../../images/address.png' style='width:25rpx;height:25rpx;margin-left:10rpx;'></image>
+        <view class="text-oneline office-font" style='margin-left:10rpx;'>{{addr}}</view>
       </view>
-      <view style='display:flex;flex-direction:row;align-items:center;'>
-        <image src='../../images/address.png' style='width:25rpx;height:25rpx;'></image>
-        <view class="text-oneline margin-bottom-5 office-font" style='margin-left:10rpx;'>价格：</view>
-        <view style='color:#ffcc00;' class='margin-bottom-5'>{{show_price}}</view>
-      </view>
-      <!-- <view style='position:absolute;bottom:10rpx' class="text-oneline margin-top-5 margin-bottom-5 office-font">剩余：{{count}}间</view> -->
+      <view class="text-oneline margin-bottom-5 office-font" style='margin-left:10rpx;'>剩余： {{count}}</view>
     </view>
 
 

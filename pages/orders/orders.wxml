@@ -1,38 +1,60 @@
 <!--pages/orders/orders.wxml-->
-<block wx:for="{{orders}}">
-  <view class="page">
-    <view class="page__bd">
-      <view class="weui-form-preview">
-        <view class="weui-form-preview__hd">
-          <view class="weui-form-preview__item">
-            <view class="weui-form-preview__label">付款金额</view>
-            <view class="weui-form-preview__value_in-hd">¥{{item.total_fee/100}}</view>
-          </view>
-        </view>
-        <view class="weui-form-preview__bd">
-          <view class="weui-form-preview__item">
-            <view class="weui-form-preview__label">商品</view>
-            <view class="weui-form-preview__value">{{item.description}}</view>
-          </view>
-          <view class="weui-form-preview__item">
-            <view class="weui-form-preview__label">订单号</view>
-            <view class="weui-form-preview__value">{{item.trade_no}}</view>
-          </view>
-          <view class="weui-form-preview__item">
-            <view class="weui-form-preview__label">下单时间</view>
-            <view class="weui-form-preview__value">{{item.created_at}}</view>
-          </view>
-        </view>
-        <view class="weui-form-preview__ft">
-          <navigator url="" class="weui-form-preview__btn weui-form-preview__btn_primary" hover-class="weui-form-preview__btn_active">操作</navigator>
-        </view>
-      </view>
+<import src="../templates/messageInfoTpl/messageInfoTpl.wxml" />
 
-    </view>
+<view style='color:#AAA;'>
+  <view style='display: flex;flex-direction: row;background-color:white;'>
+    <view style='float:left;width:300rpx;margin-left:50rpx;line-height:100rpx;font-size:34rpx;color:black;'>付款金额</view>
+    <view style='float:right;width:350rpx;text-align:right;line-height:100rpx;font-size:34rpx;color:red;'>￥{{orders.total_fee/100}}</view>
   </view>
-</block>
+  <view class='down-line'></view>
+  <view style='display: flex;flex-direction: row;background-color:white;'>
+    <view style='width:300rpx;margin-left:50rpx;line-height:80rpx;' class='font-order'>商品</view>
+    <text style='width:350rpx;text-align:right;line-height:80rpx;'>{{product.title}}</text>
+  </view>
 
-<!-- <view wx:if="{{!judgeIsAnyNullStr(orders)}}" class="tab-content1">
-  <image class="tab-image" src="../../images/fire.png"></image>
-  <text>您还没有相关订单哦！</text>
-</view> -->
+  <view style='height:2rpx;background-color:#f4f4f4;margin-left:50rpx;'></view>
+
+  <view style='display: flex;flex-direction: row;background-color:white;'>
+    <view style='width:300rpx;margin-left:50rpx;line-height:80rpx;' class='font-order'>订单号</view>
+    <text style='width:350rpx;text-align:right;line-height:80rpx;'>{{orders.trade_no}}</text>
+  </view>
+
+  <view style='height:2rpx;background-color:#f4f4f4;margin-left:50rpx;'></view>
+
+  <view style='display: flex;flex-direction: row;background-color:white;'>
+    <view style='width:300rpx;margin-left:50rpx;line-height:80rpx;' class='font-order'>下单时间</view>
+    <text style='width:350rpx;text-align:right;line-height:80rpx;'>{{orders.pay_at}}</text>
+  </view>
+</view>
+<view style='height:20rpx;background-color:f4f4f4'></view>
+
+
+<template is="productList" data="{{...product}}" />
+
+<view style='color:#AAA;'>
+  <view style='height:20rpx;background-color:white;'></view>
+  <view style='display: flex;flex-direction: row;background-color:white;'>
+    <view style='float:left;width:300rpx;margin-left:50rpx;line-height:100rpx;font-size:34rpx;color:black;'>企业</view>
+    <view style='float:right;width:350rpx;text-align:right;line-height:100rpx;font-size:34rpx;color:#AAA'>{{enter.name}}</view>
+  </view>
+  <view class='down-line'></view>
+  <view style='display: flex;flex-direction: row;background-color:white;'>
+    <view style='width:300rpx;margin-left:50rpx;line-height:80rpx;' class='font-order'>法人姓名</view>
+    <text style='width:350rpx;text-align:right;line-height:80rpx;'>{{enter.owner}}</text>
+  </view>
+
+  <view style='height:2rpx;background-color:#f4f4f4;margin-left:50rpx;'></view>
+
+  <view style='display: flex;flex-direction: row;background-color:white;'>
+    <view style='width:300rpx;margin-left:50rpx;line-height:80rpx;' class='font-order'>地址</view>
+    <text style='width:350rpx;text-align:right;line-height:80rpx;'>{{enter.address}}</text>
+  </view>
+
+  <view style='height:2rpx;background-color:#f4f4f4;margin-left:50rpx;'></view>
+
+  <view style='display: flex;flex-direction: row;background-color:white;'>
+    <view style='width:300rpx;margin-left:50rpx;line-height:80rpx;' class='font-order'>税号</view>
+    <text style='width:350rpx;text-align:right;line-height:80rpx;'>{{enter.tax_code}}</text>
+  </view>
+</view>
+<view style='height:2rpx;background-color:#f4f4f4;margin-left:50rpx;'></view>

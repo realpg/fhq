@@ -6,7 +6,8 @@ Page({
   data: {
     systemInfo: {},
     userInfo: {},
-    bg: { img:"http://ozhs589fk.bkt.clouddn.com/bg.png?imageView2/1/w/375/h/150/interlace/1"},
+    bg: { img: "http://ozhs589fk.bkt.clouddn.com/bg.png?imageView2/1/w/375/h/150/interlace/1" },
+    orders: []
   },
 
   //事件处理函数
@@ -15,7 +16,7 @@ Page({
       url: '../orders/orders'
     })
   },
-  
+
 
   onLoad: function (options) {
     vm = this
@@ -46,11 +47,41 @@ Page({
     })
   },
 
+  getPayListByUserId: function () {
+    util.getPayListByUserId({}, function (res) {
+      var orders = res.data.ret
+      for (var i = 0; i < orders.length; i++) {
+        if (orders[i].status == 0) {
+          orders[i].status = "未支付"
+        } else if (orders[i].status == 1) {
+          orders[i].status = "过期"
+        } else if (orders[i].status == 2) {
+          orders[i].status = "支付成功"
+        } else if (orders[i].status == 3) {
+          orders[i].status = "支付失败"
+        } else {
+          orders[i].status = "已经退款"
+        }
+      }
+      vm.setData({
+        orders: orders
+      })
+      console.log("根据id获取订单" + JSON.stringify(vm.data.orders))
+
+    }, null)
+  },
+
+  jumpOrders: function (e) {
+    wx.navigateTo({
+      url: '/pages/orders/orders?id=' + e.currentTarget.dataset.id,
+    })
+  },
+
   /**
    * 生命周期函数--监听页面初次渲染完成
    */
   onReady: function () {
-
+    vm.getPayListByUserId()
   },
 
   /**

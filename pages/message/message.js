@@ -34,13 +34,15 @@ Page({
       console.log("资讯页数据" + JSON.stringify(res.data.ret.data))
       var messageList = res.data.ret.data
       for (var i = 0; i < messageList.length; i++) {
-        messageList[i].img = util.qiniuUrlTool(messageList[i].img, "folder_index");
+        messageList[i].img = util.qiniuUrlTool(messageList[i].img, "message_hi");
       }
       console.log(JSON.stringify(messageList[0].img)) 
       vm.setData({
         messageList: messageList
       })
+    console.log("资讯页数据1" + JSON.stringify(vm.data.messageList))
     }, null)
+    
   },
 
   jumpMessageInfo: function (e) {

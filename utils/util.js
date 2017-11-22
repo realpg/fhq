@@ -8,7 +8,7 @@ var SERVER_URL = (TESTMODE) ? DEBUG_URL : SERVER_URL;
 ///////七牛相关///////////////////////////////////
 //根据key值获取图片真实链接
 function getImgRealUrl(key_v) {
-  return "http://dsyy.isart.me/" + key_v;  
+  return "http://dsyy.isart.me/" + key_v;
 }
 
 //获取七牛URL，进行图片剪裁
@@ -27,16 +27,19 @@ function qiniuUrlTool(img_url, type) {
   var qn_img_url;
   switch (type) {
     case "top_ad":      //广告图片
-      qn_img_url = img_url + "?imageView2/2/w/320/h/165/interlace/1";
+      qn_img_url = img_url + "?imageView2/2/w/640/h/330/interlace/1";
       break;
     case "folder_index":        //首页图片
       qn_img_url = img_url + "?imageView2/2/w/450/q/75/interlace/1";
+      break;
+    case "message_hi":        //首页图片
+      qn_img_url = img_url + "?imageView2/2/w/355/h/180/interlace/1";
       break;
     case "work_step":           //编辑的画夹步骤
       qn_img_url = img_url + "?imageView2/2/w/750/interlace/1";
       break;
     case "user_hi":  //头像
-      qn_img_url = img_url + "?imageView2/1/w/200/h/200/interlace/1";
+      qn_img_url = img_url + "?imageView2/1/w/200/h/200/interlac12e/1";
     case "bar_detail":  //书吧详情页
       qn_img_url = img_url + "?imageView2/1/w/750/h/384/interlace/1";
     case "user_bg":  //我的背景
@@ -180,13 +183,21 @@ function getByIdWithToken(param, successCallback, errorCallback) {
 function getById(param, successCallback, errorCallback) {
   wxRequest(SERVER_URL + '/user/getById', param, "GET", successCallback, errorCallback);
 }
-// 下单接口
+// 临时下单接口
 function postTemPrepay(param, successCallback, errorCallback) {
   wxRequest(SERVER_URL + '/wxpay/temPrepay', param, "POST", successCallback, errorCallback);
+}
+// 下单接口
+function prepay(param, successCallback, errorCallback) {
+  wxRequest(SERVER_URL + '/wxpay/prepay', param, "POST", successCallback, errorCallback);
 }
 // 获取用户订单
 function getPayListByUserId(param, successCallback, errorCallback) {
   wxRequest(SERVER_URL + '/wxpay/getListByUserId', param, "GET", successCallback, errorCallback);
+}
+// 根据id获取用户订单
+function getPayById(param, successCallback, errorCallback) {
+  wxRequest(SERVER_URL + '/wxpay/getById', param, "GET", successCallback, errorCallback);
 }
 //返回
 function navigateBack(delta) {
@@ -489,7 +500,7 @@ module.exports = {
   judgeIsNullImg: judgeIsNullImg,
   chooseImage: chooseImage,
   getErrorMsg: getErrorMsg,
-  test:test,
+  test: test,
 
   getOfficePageByOfficeId: getOfficePageByOfficeId,
   getMessageList: getMessageList,
@@ -504,5 +515,7 @@ module.exports = {
   postTemPrepay: postTemPrepay,
   getPayListByUserId: getPayListByUserId,
   getById: getById,
-  getProductList: getProductList
+  getProductList: getProductList,
+  prepay: prepay,
+  getPayById: getPayById
 }

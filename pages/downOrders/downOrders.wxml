@@ -28,8 +28,8 @@
     <radio-group bindchange="radioChange">
       <label class="weui-cell weui-check__label" wx:for="{{enterprise}}" wx:key="value">
         <radio class="weui-check" value="{{index}}" checked="{{item.checked}}" />
-        <view wx:if="{{item.checked}}" class="weui-cell__bd" style='color:black'>{{item.name}}</view>
-        <view wx:else class="weui-cell__bd">{{item.name}}</view>
+        <view wx:if="{{item.checked}}" class="weui-cell__bd" style='color:black;margin-left:20rpx;'>{{item.name}}</view>
+        <view wx:else class="weui-cell__bd" style='margin-left:20rpx;font-size:20rpx;'>{{item.name}}</view>
 
         <view class="weui-cell__ft weui-cell__ft_in-radio" wx:if="{{item.checked}}">
           <!-- <icon class="weui-icon-radio" type="success_no_circle" size="16"></icon> -->

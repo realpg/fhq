@@ -3,7 +3,9 @@ var util = require('../../utils/util.js');
 var vm = null
 Page({
   data: {
-    orders: [],
+    orders: [],//总订单
+    product:{},//商品
+    enter:{},//企业信息
 
     tab1: {
       list: [{
@@ -25,7 +27,7 @@ Page({
 
   onLoad: function (options) {
     vm = this
-    vm.getPayListByUserId()
+    vm.getPayById(options.id)
   },
 
 
@@ -38,6 +40,23 @@ Page({
       console.log("根据id获取订单" + JSON.stringify(vm.data.orders))
 
     }, null)
+  },
+
+  getPayById:function(obj){
+    var param = {
+      id: obj
+    }
+    util.getPayById(param,function(res){
+      console.log("订单详情" + JSON.stringify(res.data.ret.enter))
+      var orders = res.data.ret//订单
+      var product = res.data.ret.good.good_info//商品
+      var enter = res.data.ret.enter//企业
+      vm.setData({
+        orders: orders,
+        product:product,
+        enter:enter
+      })
+    },null)
   },
 
   // handleZanTabChange(e) {

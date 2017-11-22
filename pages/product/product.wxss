@@ -1,7 +1,7 @@
 /* pages/product/product.wxss */
 .office-bg {
   height: 100%;
-  background-color: #f4f4f4;
+  background-color: white;
 }
 
 .book-seize {

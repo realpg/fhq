@@ -47,14 +47,17 @@ Page({
         if (res.confirm) {
           //获取列表中要删除项的下标  
           var id = e.currentTarget.dataset.id;
-          // console.log('删除企业id' + JSON.stringify(id))
+          console.log('删除企业success' + JSON.stringify(res))
           var param = {
             id: id
           }
           util.deleteEnterpriseById(param, function (res) {
             console.log("删除企业" + JSON.stringify(res))
+            vm.getListByUserId()
           }, null)
-          vm.getListByUserId()
+
+         
+
         } else {
           // initdata(vm)
         }
@@ -74,7 +77,7 @@ Page({
    * 生命周期函数--监听页面显示
    */
   onShow: function () {
-
+    vm.getListByUserId()
   },
 
   /**

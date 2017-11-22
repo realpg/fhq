@@ -1,10 +1,15 @@
 <!--pages/manage/manage.wxml-->
 <block wx:for="{{productList}}">
-  <view style='position:relative;height:400rpx;background-color:#f4f4f4;' catchtap="jumpMessageInfo" data-messageid="{{id}}">
+  <view style='position:relative;height:400rpx;background-color:#f4f4f4;' catchtap="jumpProduct" data-officeid="{{item.id}}">
     <view style='weight:100%;text-align: center;margin-top:20rpx'>
-      <image class="image_frame" src="http://twst.isart.me/o_1bssc476khrdh9of9m11731kh79.jpg" mode="aspectFill"></image>
+      <image class="image_frame" src="{{item.img}}" mode="aspectFill"></image>
+      <view class='font-size-14 text-oneline tw-title-div' style='background-color:rgba(0,0,0,0.3);position: absolute;top: 50rpx;left: 26rpx;color:#fff;max-width:700rpx;min-width:230rpx;border-radius:0 8rpx 8rpx 0;'>
+        <text style='padding-left:30rpx;text-align:left;' class='text-fiveline'>{{item.desc}}</text>
+      </view>
+      
       <view class='font-size-14 text-oneline tw-title-div' style='background-color:rgba(0,0,0,0.3);position: absolute;top: 300rpx;left: 26rpx;color: #fff;width: 700rpx;border-radius: 0 0 6rpx 6rpx;'>
-        <text style='line-height:74rpx;padding-left:30rpx;'>{{item.title}}</text>
+        <text style='line-height:74rpx;padding-left:30rpx;float:left;width:500rpx;text-align:left;'>{{item.title}}</text>
+        <text style='float:right;text-align:right;line-height:74rpx;color:#ffcc00'>{{item.show_price}}</text>
       </view>
     </view>
   </view>

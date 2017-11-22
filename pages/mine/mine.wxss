@@ -3,7 +3,7 @@
 page {
   display: block;
   /* min-height: 300px; */
-  background-color: #f4f4f4;
+  background-color: white;
 }
 
 .my-background {
@@ -145,4 +145,20 @@ page {
 
 .navigator-hover {
   color: blue;
+}
+
+/* ---weui订单样式--- */
+
+.weui-form-preview {
+  margin-bottom: 25px;
+}
+
+/* --- */
+
+.click-class {
+  background-color: #ececec;
+}
+
+.my-bg{
+  background-color: white;
 }

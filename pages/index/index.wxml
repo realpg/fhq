@@ -1,8 +1,8 @@
 <import src="../templates/messageInfoTpl/messageInfoTpl.wxml" />
-
+  <!-- <scroll-view class="" style="height: {{systemInfo.windowHeight}}px;" scroll-y="true" bindscrolltolower="bindDownLoad"> -->
 <view class="page">
   <!-- 轮播图 -->
-  <swiper class='' indicator-dots="true" indicator-color="rgba(255, 255, 255, .3)" indicator-active-color="#FFFFFF" autoplay="true" interval="4000" duration="600" style="height:{{systemInfo.windowWidth/2}}px">
+  <swiper indicator-dots="true" indicator-color="rgba(255, 255, 255, .3)" indicator-active-color="#FFFFFF" autoplay="true" interval="4000" duration="600" style="height:{{systemInfo.windowWidth/2}}px">
     <block wx:for="{{swipers}}">
       <swiper-item>
         <image src="{{item.img}}" class="slide-image" width="750rpx" />
@@ -32,9 +32,11 @@
     猜您喜欢
   </view>
 
-  <!-- 办理商品列表 -->
-  <block wx:for="{{productInfo}}" >
-    <template is="productList" data="{{...item}}" />
-  </block>
+
+    <!-- 办公商品列表 -->
+    <block wx:for="{{banli}}">
+      <template is="productList" data="{{...item}}" />
+    </block>
 
 </view>
+  <!-- </scroll-view> -->

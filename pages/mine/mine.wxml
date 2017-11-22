@@ -1,65 +1,46 @@
-<view>
+<view class=''>
 
   <view class="userinfo-order" style='background-image:url({{bg.img}})'>
     <view style='height:35rpx'></view>
     <image class="userinfo-avatar" src="{{userInfo.avatar}}" background-size="cover"></image>
     <text class="userinfo-nickname">{{userInfo.nick_name}}</text>
   </view>
+  <view style='height:1rpx;background-color:#e6e6e6;width:100%;'></view>
 
+  <!-- 导航按钮 -->
+  <view class="page__bd" style='height:164rpx;'>
+    <navigator url="/pages/myMessage/myMessage" class="weui-grid-grating" hover-class="click-class" data-myType='2'>
+      <image class="weui-grid__icon-copy" src="../../images/my1.png" mode="scaleToFill" />
+      <view class="weui-grid__label">我的资料</view>
+    </navigator>
+    <navigator url="/pages/enterprise/enterprise" class="weui-grid-grating" hover-class="click-class" data-myType='0'>
+      <image class="weui-grid__icon-copy" src="../../images/my2.png" mode="scaleToFill" />
+      <view class="weui-grid__label">我的企业</view>
+    </navigator>
+    <navigator url="/pages/message/message?myType=1" class="weui-grid-grating" hover-class="click-class" data-type='1'>
+      <image class="weui-grid__icon-copy" src="../../images/my3.png" mode="scaleToFill" />
+      <view class="weui-grid__label">关于我们</view>
+    </navigator>
+  </view>
+
+  <!-- <view style='height:10rpx;background-color:white;'></view> -->
+  <block wx:if="{{orders!=null&&orders!=''}}">
   <view class='down-line-5'></view>
-
-  <!-- <view class="order border-bottom-3px" catchtap="toOrder">
-    <text class="myorder-text">我的订单</text>
-    <text class="myorderlook-text">查看全部订单</text>
-    <image class="next-image" src="../../images/fire.png"></image>
-  </view>
-  <view class="line"></view> -->
-
-  <view class="separate"></view>
-  <view class="person-list" style='background-color:white'>
-    <navigator url="/pages/myMessage/myMessage" style='width:100%;' hover-class="navigator-hover">
-      <view class="list-item">
-        <image class="item-image" src="../../images/my1.png"></image>
-        <text class="item-text">我的资料</text>
+    <view class='width:100%;' style='background-color:white;padding-top:20rpx;'>
+      <view class="font-size-17" style='line-height:33rpx;font-size:30rpx;border-left:2px solid #e75110;padding-left:20rpx;font-weight:bold;margin:0px 30rpx;'>
+        我的订单
       </view>
-    </navigator>
-
-    <view class="person-line"></view>
-
-    <navigator url="/pages/orders/orders" style='width:100%;' hover-class="navigator-hover">
-      <view class="list-item">
-        <image class="item-image" src="../../images/my2.png"></image>
-        <text class="item-text">我的订单</text>
-      </view>
-    </navigator>
-
-    <view class="person-line"></view>
-
-    <navigator url="/pages/enterprise/enterprise" style='width:100%;' hover-class="navigator-hover">
-      <view class="list-item">
-        <image class="item-image" src="../../images/my3.png"></image>
-        <text class="item-text">我的企业</text>
-      </view>
-    </navigator>
-
-    <view class="person-line"></view>
-    <view class="list-item">
-      <image class="item-image" src="../../images/my4.png"></image>
-      <text class="item-text">关于我们</text>
     </view>
-  </view>
-  <view class="person-line"></view>
-  <!-- <view style='display: flex;flex-direction: row;background-color:green;'>
-    <view style='weight:100rpx'>
-      <image style='width:40rpx;height:40rpx;margin:20rpx;'  src="../../images/资料.png"></image>
-    </view>
-    <view style='margin:auto 0rpx; weight:500rpx'>
-      <text class="item-text">哈哈哈</text>
-    </view>
-    <view style='weight:100rpx'>
-      <image style='width:40rpx;height:40rpx;margin:20rpx;'  src="../../images/资料.png"></image>
-    </view>
-  </view> -->
+  </block>
 
-  <view class="separate"></view>
+  <view style='height:20rpx;background-color:white;' class='down-line'></view>
+
 </view>
+<block wx:for="{{orders}}">
+  <view class='flex-row' style='height:90rpx;background-color:white;align-items:center;' data-id='{{item.id}}' bindtap='jumpOrders'>
+    <view style='font-size:30rpx;padding-left:50rpx;width:500rpx;line-height:90rpx;'>{{item.good.good_info.title}}</view>
+    <view style='width:150rpx;text-align:right;line-height:90rpx;color:#AAA;'>{{item.status}}</view>
+    <image src='../../images/进入.png' style='width:40rpx;height:40rpx;'></image>
+  </view>
+  <view class='down-line'></view>
+</block>

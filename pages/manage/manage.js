@@ -21,10 +21,19 @@ Page({
     util.getProductList(param, function (res) {
       console.log("办理数据" + JSON.stringify(res))
       var productList = res.data.ret.data
+      console.log("111111" + JSON.stringify(productList))
       vm.setData({
         productList: productList
       })
     }, null)
+  },
+
+  jumpProduct:function(e){
+    console.log("111" + JSON.stringify(e))
+    var officeid = e.currentTarget.dataset.officeid
+    wx.navigateTo({
+      url: '/pages/product/product?officeid=' + officeid,
+    })
   },
 
   /**

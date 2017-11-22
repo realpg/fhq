@@ -59,9 +59,9 @@ Page({
     util.getListByUserId({}, function (res) {
       var enterprise = res.data.ret
       // 判断企业是否为空
-      if (util.judgeIsAnyNullStr(enterprise)){
+      if (util.judgeIsAnyNullStr(enterprise)) {
         vm.setData({
-          enterpriseIsNull:true
+          enterpriseIsNull: true
         })
         console.log("是否为空" + vm.data.enterpriseIsNull)
         return
@@ -79,8 +79,8 @@ Page({
     console.log('radio发生change事件，携带value值为：', e.detail.value);
     var enterprise = vm.data.enterprise;
     for (var i = 0, len = enterprise.length; i < len; ++i) {
-        // enterprise[i].checked = true;
-        enterprise[i].checked = i == e.detail.value;
+      // enterprise[i].checked = true;
+      enterprise[i].checked = i == e.detail.value;
       if (i == e.detail.value) {
         vm.setData({
           en_id: enterprise[i].id
@@ -140,7 +140,7 @@ Page({
     })
   },
 
-  clickClose: function(e) {
+  clickClose: function (e) {
     wx.navigateBack({
       delta: 1
     })
@@ -159,28 +159,30 @@ Page({
       good_id: 1,
       count: vm.data.num
     })
-    util.postTemPrepay(param, function (res) {
+    util.prepay(param, function (res) {
       console.log("支付" + JSON.stringify(res))
-      wx.navigateTo({
-        url: '/pages/orders/orders',
+      var msgObj = res.data.ret
+      wx.requestPayment({
+        'timeStamp': msgObj.timeStamp + "",
+        'nonceStr': msgObj.nonceStr,
+        'package': msgObj.package,
+        'signType': msgObj.signType,
+        'paySign': msgObj.paySign,
+        'success': function (res) {
+          console.log("pay success：" + JSON.stringify(res))
+          // var userInfo = app.globalData.userInfo
+          // userInfo.level = level_id
+          // app.globalData.userInfo = userInfo
+          // app.storeUserInfo(userInfo)  //更新缓存
+          // console.log("更新缓存：" + JSON.stringify(app.globalData.userInfo))
+          wx.navigateTo({
+            url: '/pages/orders/orders',
+          })
+        },
+        'fail': function (res) {
+          console.log("fail" + JSON.stringify(res))
+        }
       })
-      // wx.requestPayment({
-      //   'timeStamp':  "1490840662",
-      //   'nonceStr': '5K8264ILTKCH16CQ2502SI8ZNMTM67VS',
-      //   'package': 'prepay_id=wx2017033010242291fcfe0db70013231072',
-      //   'signType': 'MD5',
-      //   'paySign': '',
-      //   'success': function (res) {
-      //     console.log("pay success：" + JSON.stringify(res))
-      //     var userInfo = app.globalData.userInfo
-      //     userInfo.level = level_id
-      //     app.globalData.userInfo = userInfo
-      //     app.storeUserInfo(userInfo)  //更新缓存
-      //     console.log("更新缓存：" + JSON.stringify(app.globalData.userInfo))
-      //   },
-      //    'fail': function (res) {
-      //   }
-      // })
     }, null)
   },
   /**

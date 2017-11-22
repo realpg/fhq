@@ -2,6 +2,7 @@ var util = require('../../utils/util.js')
 //获取应用实例
 var app = getApp()
 var vm = null
+var page = 0
 Page({
   data: {
     systemInfo: {},
@@ -10,8 +11,9 @@ Page({
     productUrl: { url: "/pages/product/product" },
     banli: [],
   },
-  //加载
-  onShow: function () {
+
+
+  onLoad: function (options) {
     console.log('onLoad')
     vm = this
     //初始化sysInfo
@@ -24,12 +26,47 @@ Page({
     })
     vm.setADSwiper()
     vm.getProductList()
+    // vm.GetList()
   },
+
+  //加载
+  onShow: function () {
+
+  },
+
+  //该方法绑定了页面滑动到底部的事件
+  bindDownLoad: function () {
+    util.showLoading("加载")
+    console.log("bindDownLoad执行")
+    vm.GetList();
+  },
+
+  GetList: function () {
+    var param = ({
+      type: '0',
+      page: page
+    })
+    console.log("getList执行" + page)
+    util.getProductList(param, function (res) {
+      console.log("返回参数" + JSON.stringify(res))
+      var banliList = vm.data.banli;
+      var resList = res.data.ret.data
+      for (var i = 0; i < resList.length; i++) {
+        banliList.push(resList[i]);
+      }
+      vm.setData({
+        banli: banliList
+      });
+      page++;
+      util.hideLoading()
+    })
+  },
+
   //获取商品信息
   getProductList: function () {
     var param = ({
-      type: '1',
-      page: '0'
+      type: '0',
+      page: page
     })
     util.getProductList(param, function (res) {
       console.log("办理类商品" + JSON.stringify(res.data.ret.data))
@@ -52,7 +89,7 @@ Page({
       if (ret.data.code == "200") {
         var msgObj = ret.data.ret.ad_infos;
         for (var i = 0; i < msgObj.length; i++) {
-          msgObj[i].img = util.qiniuUrlTool(msgObj[i].img, "top_ad")
+          // msgObj[i].img = util.qiniuUrlTool(msgObj[i].img, "top_ad")
         }
         vm.setData({
           swipers: msgObj
@@ -66,4 +103,12 @@ Page({
       }
     }, null);
   },
+  /**
+ * 页面上拉触底事件的处理函数
+ */
+  onReachBottom: function () {
+
+  },
 })
+
+

@@ -38,10 +38,19 @@
 
   <view style='height:100rpx'></view>
 
-  <view class="white-bg weui-flex book-shara-box border-top">
-    <view class="office-share1">
-      剩余： {{good_info.count}}间
+  <block wx:if="{{good_info.type==0}}">
+    <view class="white-bg weui-flex book-shara-box border-top">
+      <view class="office-share1">
+        剩余： {{good_info.count}}间
+      </view>
+      <view class='office-share2 text-center' catchtap="gotobuy">立即下单</view>
     </view>
-    <view class='office-share2 text-center' catchtap="gotobuy">立即下单</view>
-  </view>
+  </block>
+
+  <block wx:if="{{good_info.type==1}}">
+    <view class="white-bg weui-flex book-shara-box border-top">
+      <view class='text-center' style='background-color: #ffcc00;width: 100%;margin-left: 0rpx;' catchtap="gotobuy">立即下单</view>
+    </view>
+  </block>
+
 </view>

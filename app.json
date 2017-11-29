@@ -8,14 +8,12 @@
     "pages/enterprise/enterprise",
     "pages/myMessage/myMessage",
     "pages/product/product",
-    "pages/test/test",
     "pages/alterMyMessage/alterMyMessage",
     "pages/orders/orders",
     "pages/article/article",
     "pages/templates/messageInfoTpl/messageInfoTpl",
     "pages/message/message",
-    "pages/pay/pay",
-    "pages/templates/addressTem/addressTem"
+    "pages/pay/pay"
   ],
   "window": {
     "backgroundTextStyle": "light",

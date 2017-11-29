@@ -1,5 +1,10 @@
 <import src="../templates/messageInfoTpl/messageInfoTpl.wxml" />
   <!-- <scroll-view class="" style="height: {{systemInfo.windowHeight}}px;" scroll-y="true" bindscrolltolower="bindDownLoad"> -->
+
+ <!-- <loading hidden="true">
+        加载中...
+    </loading> -->
+
 <view class="page">
   <!-- 轮播图 -->
   <swiper indicator-dots="true" indicator-color="rgba(255, 255, 255, .3)" indicator-active-color="#FFFFFF" autoplay="true" interval="4000" duration="600" style="height:{{systemInfo.windowWidth/2}}px">

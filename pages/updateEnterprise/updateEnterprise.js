@@ -13,7 +13,6 @@ function initQiniu() {
   console.log("initQiniu options:" + JSON.stringify(options))
   qiniuUploader.init(options);
 }
-
 Page({
   data: {
     showTopTips: false,
@@ -27,13 +26,14 @@ Page({
     files: [],//营业执照 lice_img
     files1: [],//税务登记证 tax_img
     files2: [],//身份证正面 owner_card1
-    files3: [],//身份证反面 owner_card2
+    // files3: [],身份证反面 owner_card2
     files4: [],//法人手持身份证 owner_card3
     enterprise: {},
     id: "",
   },
 
   onLoad: function (options) {
+    util.showLoading('正在加载数据');
     vm = this
     if (options.id) {
       var param = {
@@ -300,7 +300,7 @@ Page({
       }
     })
   },
-  //删除图片
+  //删除营业执照图片
   updateImage: function (e) {
     var id = e.currentTarget.dataset.id
     console.log(JSON.stringify(e))
@@ -312,6 +312,40 @@ Page({
     });
     console.log("图片组：" + JSON.stringify(vm.data.files))
   },
+
+  //删除税务登记证图片
+  updateImage1: function (e) {
+    var id = e.currentTarget.dataset.id
+    var files = vm.data.files1
+    files.splice(id, 1)
+    vm.setData({
+      files1: files
+    });
+    console.log("图片组：" + JSON.stringify(vm.data.files1))
+  },
+
+  //删除身份证正反面图片
+  updateImage2: function (e) {
+    var id = e.currentTarget.dataset.id
+    var files = vm.data.files2
+    files.splice(id, 1)
+    vm.setData({
+      files2: files
+    });
+    console.log("图片组：" + JSON.stringify(vm.data.files2))
+  },
+
+  //删除法人手持身份证图片
+  updateImage3: function (e) {
+    var id = e.currentTarget.dataset.id
+    var files = vm.data.files4
+    files.splice(id, 1)
+    vm.setData({
+      files4: files
+    });
+    console.log("图片组：" + JSON.stringify(vm.data.files4))
+  },
+
   previewImage: function (e) {
     wx.previewImage({
       current: e.currentTarget.id, // 当前显示图片的http链接
@@ -346,12 +380,48 @@ Page({
     var name = e.detail.value.name
     var idNumber = e.detail.value.idNumber
     var phone = e.detail.value.phone
-    var lice_img = vm.data.files[0]
-    var tax_img = vm.data.files1[0]
+    var lice_img = vm.data.files[0]//营业执照
+    var tax_img = vm.data.files1[0]//税务登记证
     var owner_card1 = vm.data.files2[0]
     var owner_card2 = vm.data.files2[1]
     var owner_card3 = vm.data.files4[0]
-    // console.log("files0" + JSON.stringify(files0))    
+
+    if (util.judgeIsAnyNullStr(enterpriseName)) {
+      util.showModal("提示", "企业名称不正确", )
+      return
+    } else if (util.judgeIsAnyNullStr(address)) {
+      util.showModal("提示", "企业地址不正确", )
+      return
+    } else if (util.judgeIsAnyNullStr(postcode)) {
+      util.showModal("提示", "邮编不正确", )
+      return
+    } else if (util.judgeIsAnyNullStr(taxNum)) {
+      util.showModal("提示", "税号不正确", )
+      return
+    } else if (util.judgeIsAnyNullStr(name)) {
+      util.showModal("提示", "法人姓名不正确", )
+      return
+    } else if (util.judgeIsAnyNullStr(idNumber)) {
+      util.showModal("提示", "法人身份证号不正确", )
+      return
+    } else if (util.judgeIsAnyNullStr(phone)) {
+      util.showModal("提示", "法人电话不正确", )
+      return
+    }else if (util.judgeIsAnyNullStr(lice_img)) {
+      util.showModal("提示", "营业执照不正确", )
+      return
+    } else if (util.judgeIsAnyNullStr(tax_img)) {
+      util.showModal("提示", "税务登记证不正确", )
+      return
+    } else if (util.judgeIsAnyNullStr(owner_card2)) {
+      util.showModal("提示", "法人身份证正反面不正确", )
+      return
+    } else if (util.judgeIsAnyNullStr(owner_card3)) {
+      util.showModal("提示", "法人手持身份证不正确", )
+      return
+    }
+    // console.log("files0" + JSON.stringify(files0))   
+    util.showLoading("请稍等");
     vm.setData({
       enterpriseName: enterpriseName,
       address: address,
@@ -394,18 +464,19 @@ Page({
       }
     }
     util.updateEnterprise(param, function (res) {
+      util.hideLoading()
       console.log("更新企业" + JSON.stringify(res))
       if (res.data.code == "200") {
         wx.showModal({
           title: '提示',
           showCancel: false,
-          content: '发布信息成功',
+          content: '录入企业成功',
           success: function (res) {
             if (res.confirm) {
               console.log("success:" + JSON.stringify(res))
-              // wx.navigateTo({
-              //   url: '/pages/enterprise/enterprise'
-              // })
+              wx.navigateBack({
+                delta: 1
+              })
             }
           }
         })
@@ -413,7 +484,7 @@ Page({
       else {
         wx.showModal({
           title: '提示',
-          content: '发布信息失败',
+          content: '录入企业失败',
           showCancel: false,
           success: function (res) {
             if (res.confirm) {
@@ -423,9 +494,9 @@ Page({
         })
       }
     })
-    wx.navigateBack({
-      delta:1
-    })
+    // wx.navigateBack({
+    //   delta:1
+    // })
     // wx.navigateTo({
     //   url: '/pages/product/product?officeid=' + officeid
     // })

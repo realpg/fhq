@@ -12,7 +12,6 @@ Page({
     banli: [],
   },
 
-
   onLoad: function (options) {
     console.log('onLoad')
     vm = this
@@ -41,6 +40,7 @@ Page({
     vm.GetList();
   },
 
+  //触底加载信息 暂时保留
   GetList: function () {
     var param = ({
       type: '0',
@@ -64,18 +64,21 @@ Page({
 
   //获取商品信息
   getProductList: function () {
+    util.showLoading("加载商品信息")
     var param = ({
       type: '0',
       page: page
     })
     util.getProductList(param, function (res) {
-      console.log("办理类商品" + JSON.stringify(res.data.ret.data))
-      vm.setData({
-        banli: res.data.ret.data
-      })
+      console.log("办理类商品" + JSON.stringify(res))
+      if (res.data.code == "200") {
+        vm.setData({
+          banli: res.data.ret.data
+        })
+      }
     }, null)
   },
-  // 根据商品id获取商品
+  // 跳转到商品详情页
   jumpOfficeInfo: function (e) {
     var officeid = JSON.stringify(e.currentTarget.dataset.officeid)
     wx.navigateTo({
@@ -109,6 +112,14 @@ Page({
   onReachBottom: function () {
 
   },
+
+  /**
+ * 用户点击右上角分享
+ */
+  onShareAppMessage: function () {
+
+  }
+
 })
 
 

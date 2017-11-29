@@ -1,24 +1,22 @@
 <!--pages/updateEnterprise/updateEnterprise.wxml-->
-<import src="../templates/addressTem/addressTem.wxml" />
 <form bindsubmit="formSubmit" bindreset="formReset">
   <view class="page">
     <view style='height:20rpx;'></view>
-    <!-- <view class="weui-cells_after-title"> -->
     <view class="weui-cell weui-cell_input" style='background-color:white;'>
       <view class="weui-cell__hd">
         <view class="weui-label" style='font-size:30rpx;line-height:44px;'>企业名称</view>
       </view>
       <view class="weui-cell__bd">
-        <input style='font-size:30rpx;' name="enterpriseName" class="weui-input" placeholder="请输入企业名称" value='{{name}}'/>
+        <input style='font-size:30rpx;' name="enterpriseName" class="weui-input" placeholder="请输入企业名称(必填)" value='{{name}}' />
       </view>
     </view>
 
     <view class="weui-cell weui-cell_input" style='background-color:white;'>
       <view class="weui-cell__hd">
-        <view class="weui-label" style='font-size:30rpx;line-height:44px;'>详细地址</view>
+        <view class="weui-label" style='font-size:30rpx;line-height:44px;'>企业地址</view>
       </view>
       <view class="weui-cell__bd">
-        <input style='font-size:30rpx;' name="address" class="weui-input" placeholder="请输入详细地址" value='{{address}}'/>
+        <input style='font-size:30rpx;' name="address" class="weui-input" placeholder="请输入详细地址(必填)" value='{{address}}' />
       </view>
     </view>
 
@@ -27,7 +25,7 @@
         <view class="weui-label" style='font-size:30rpx;line-height:44px;'>邮编</view>
       </view>
       <view class="weui-cell__bd">
-        <input style='font-size:30rpx;' name="postcode" class="weui-input" placeholder="请输入邮编" value='{{code}}'/>
+        <input style='font-size:30rpx;' name="postcode" class="weui-input" placeholder="请输入邮编(必填)" value='{{code}}' />
       </view>
     </view>
 
@@ -36,7 +34,7 @@
         <view class="weui-label" style='font-size:30rpx;line-height:44px;'>税号</view>
       </view>
       <view class="weui-cell__bd">
-        <input style='font-size:30rpx;' name="taxNum" class="weui-input" placeholder="请输入税号" value='{{tax_code}}'/>
+        <input style='font-size:30rpx;' name="taxNum" class="weui-input" placeholder="请输入税号(必填)" value='{{tax_code}}' />
       </view>
     </view>
 
@@ -45,7 +43,7 @@
         <view class="weui-label" style='font-size:30rpx;line-height:44px;'>法人姓名</view>
       </view>
       <view class="weui-cell__bd">
-        <input style='font-size:30rpx;' name="name" class="weui-input" placeholder="请输入法人姓名" value='{{owner}}'/>
+        <input style='font-size:30rpx;' name="name" class="weui-input" placeholder="请输入法人姓名(必填)" value='{{owner}}' />
       </view>
     </view>
 
@@ -54,7 +52,7 @@
         <view class="weui-label" style='font-size:30rpx;line-height:44px;'>法人身份证号</view>
       </view>
       <view class="weui-cell__bd">
-        <input style='font-size:30rpx;' name="idNumber" class="weui-input" placeholder="请输入法人身份证号" value='{{owner_no}}'/>
+        <input style='font-size:30rpx;' name="idNumber" class="weui-input" placeholder="请输入法人身份证号(必填)" value='{{owner_no}}' />
       </view>
     </view>
 
@@ -63,7 +61,7 @@
         <view class="weui-label" style='font-size:30rpx;line-height:44px;'>法人电话</view>
       </view>
       <view class="weui-cell__bd">
-        <input style='font-size:30rpx;' name="phone" class="weui-input" placeholder="请输入法人电话" value='{{owner_tel}}'/>
+        <input style='font-size:30rpx;' name="phone" class="weui-input" placeholder="请输入法人电话(必填)" value='{{owner_tel}}' />
       </view>
     </view>
     <!-- </view> -->
@@ -75,7 +73,7 @@
           <view class="weui-cell__bd">
             <view class="weui-uploader">
               <view class="weui-uploader__hd">
-                <view class="weui-uploader__title">营业执照</view>
+                <view class="weui-uploader__title" style='font-size:30rpx;'>营业执照(必填)</view>
                 <view class="weui-uploader__info">{{files.length}}/1</view>
               </view>
               <view class="weui-uploader__bd">
@@ -103,13 +101,13 @@
           <view class="weui-cell__bd">
             <view class="weui-uploader">
               <view class="weui-uploader__hd">
-                <view class="weui-uploader__title">税务登记证</view>
+                <view class="weui-uploader__title" style='font-size:30rpx;'>税务登记证(必填)</view>
                 <view class="weui-uploader__info">{{files1.length}}/1</view>
               </view>
               <view class="weui-uploader__bd">
                 <view class="weui-uploader__files" id="uploaderFiles">
                   <block wx:for="{{files1}}" wx:key="*this">
-                    <view class="weui-uploader__file" bindtap="previewImage1" id="{{item}}">
+                    <view class="weui-uploader__file" bindtap="updateImage1" id="{{item}}">
                       <image class="weui-uploader__img" src="{{item}}" mode="aspectFill" />
                     </view>
                   </block>
@@ -130,13 +128,13 @@
           <view class="weui-cell__bd">
             <view class="weui-uploader">
               <view class="weui-uploader__hd">
-                <view class="weui-uploader__title">法人身份证正反面</view>
+                <view class="weui-uploader__title" style='font-size:30rpx;'>法人身份证正反面(必填)</view>
                 <view class="weui-uploader__info">{{files2.length}}/2</view>
               </view>
               <view class="weui-uploader__bd">
                 <view class="weui-uploader__files" id="uploaderFiles">
                   <block wx:for="{{files2}}" wx:key="*this">
-                    <view class="weui-uploader__file" bindtap="previewImage2" id="{{item}}">
+                    <view class="weui-uploader__file" bindtap="updateImage2" id="{{item}}">
                       <image class="weui-uploader__img" src="{{item}}" mode="aspectFill" />
                     </view>
                   </block>
@@ -151,56 +149,29 @@
       </view>
     </view>
 
-    <!-- <view class="page">
-        <view class="weui-cells">
-          <view class="weui-cell">
-            <view class="weui-cell__bd">
-              <view class="weui-uploader">
-                <view class="weui-uploader__hd">
-                  <view class="weui-uploader__title">法人身份证背面</view>
-                  <view class="weui-uploader__info">{{files3.length}}/1</view>
-                </view>
-                <view class="weui-uploader__bd">
-                  <view class="weui-uploader__files" id="uploaderFiles">
-                    <block wx:for="{{files3}}" wx:key="*this">
-                      <view class="weui-uploader__file" bindtap="previewImage3" id="{{item}}">
-                        <image class="weui-uploader__img" src="{{item}}" mode="aspectFill" />
-                      </view>
-                    </block>
-                  </view>
-                  <view wx:if="{{files3.length<1}}" class="weui-uploader__input-box">
-                    <view class="weui-uploader__input" bindtap="chooseImage3"></view>
-                  </view>
-                </view>
-              </view>
-            </view>
-        </view>
-      </view>
-    </view> -->
-
     <view class="page">
-        <view class="weui-cells">
-          <view class="weui-cell">
-            <view class="weui-cell__bd">
-              <view class="weui-uploader">
-                <view class="weui-uploader__hd">
-                  <view class="weui-uploader__title">法人手持身份证</view>
-                  <view class="weui-uploader__info">{{files4.length}}/1</view>
+      <view class="weui-cells">
+        <view class="weui-cell">
+          <view class="weui-cell__bd">
+            <view class="weui-uploader">
+              <view class="weui-uploader__hd">
+                <view class="weui-uploader__title" style='font-size:30rpx;'>法人手持身份证(必填)</view>
+                <view class="weui-uploader__info">{{files4.length}}/1</view>
+              </view>
+              <view class="weui-uploader__bd">
+                <view class="weui-uploader__files" id="uploaderFiles">
+                  <block wx:for="{{files4}}" wx:key="*this">
+                    <view class="weui-uploader__file" bindtap="updateImage3" id="{{item}}">
+                      <image class="weui-uploader__img" src="{{item}}" mode="aspectFill" />
+                    </view>
+                  </block>
                 </view>
-                <view class="weui-uploader__bd">
-                  <view class="weui-uploader__files" id="uploaderFiles">
-                    <block wx:for="{{files4}}" wx:key="*this">
-                      <view class="weui-uploader__file" bindtap="previewImage4" id="{{item}}">
-                        <image class="weui-uploader__img" src="{{item}}" mode="aspectFill" />
-                      </view>
-                    </block>
-                  </view>
-                  <view wx:if="{{files4.length<1}}" class="weui-uploader__input-box">
-                    <view class="weui-uploader__input" bindtap="chooseImage4"></view>
-                  </view>
+                <view wx:if="{{files4.length<1}}" class="weui-uploader__input-box">
+                  <view class="weui-uploader__input" bindtap="chooseImage4"></view>
                 </view>
               </view>
             </view>
+          </view>
         </view>
       </view>
     </view>

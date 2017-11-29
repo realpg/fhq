@@ -1,6 +1,7 @@
 /* pages/article/article.wxss */
 
 page{
+    height: 100%;
     background-color: #FFFFFF;
 }
 image{
@@ -22,7 +23,7 @@ image{
   -moz-background-size: 100% 100%;
 }
 
-.book-bg {
+/* .book-bg {
   height: 100%;
   background-color: #f8f8f8;
-}
+} */

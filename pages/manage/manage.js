@@ -19,6 +19,7 @@ Page({
       'page': vm.data.page
     }
     util.getProductList(param, function (res) {
+      util.showLoading("加载中")
       console.log("办理数据" + JSON.stringify(res))
       var productList = res.data.ret.data
       console.log("111111" + JSON.stringify(productList))
@@ -28,7 +29,7 @@ Page({
     }, null)
   },
 
-  jumpProduct:function(e){
+  jumpProduct: function (e) {
     console.log("111" + JSON.stringify(e))
     var officeid = e.currentTarget.dataset.officeid
     wx.navigateTo({
@@ -40,14 +41,14 @@ Page({
    * 生命周期函数--监听页面初次渲染完成
    */
   onReady: function () {
-    vm.getProductList()
+
   },
 
   /**
    * 生命周期函数--监听页面显示
    */
   onShow: function () {
-
+    vm.getProductList()
   },
 
   /**

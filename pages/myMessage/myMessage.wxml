@@ -1,51 +1,45 @@
 <!--pages/myMessage/myMessage.wxml-->
 <view>
-  <view style='display:flex;flex-direction:row;align-items: center;width: 100%;height: 170rpx;background-color:white;font-size:30rpx;' bindtap='chooseImage'>
+  <view style='display:flex;flex-direction:row;align-items: center;width: 100%;height: 110rpx;background-color:white;font-size:30rpx;' bindtap='chooseImage'>
     <view class='text-oneline' style='position: relative;padding-left: 30rpx;width:200rpx'>头像</view>
-    <view style='height:100%;width:400rpx;position: relative;float:right;text-align: right;'>
-      <image style='height:160rpx;width:160rpx;border-radius:80rpx;margin-top:5rpx;' src='{{userInfo.avatar}}'></image>
+    <view style='height:100%;width:430rpx;position: relative;float:right;text-align: right;'>
+      <image style='height:100rpx;width:100rpx;border-radius:80rpx;margin-top:5rpx;' src='{{userInfo.avatar}}'></image>
     </view>
-    <image style='height:50rpx;width:50rpx;position: relative;left:40rpx' src='../../images/进入.png'></image>
   </view>
 
   <view class='down-line'></view>
 
   <view style='display:flex;flex-direction:row;align-items: center;width: 100%;height: 80rpx;background-color:white;font-size:30rpx;'>
     <view style='position:relative;padding-left: 30rpx;width:200rpx '>昵称</view>
-    <input bindblur="nick_name" style='width:400rpx;text-align: right;' value='{{userInfo.nick_name}}'></input>
-    <image style='height:50rpx;width:50rpx;position: relative;left:40rpx ' src='../../images/进入.png '></image>
+    <input bindblur="nick_name" style='width:430rpx;text-align: right;' value='{{userInfo.nick_name}}'></input>
   </view>
 
   <view class='down-line'></view>
 
   <view style='display:flex;flex-direction:row;align-items: center;width: 100%;height: 80rpx;background-color:white;font-size:30rpx;' bindtap="open">
     <view style='position:relative;padding-left: 30rpx;width:200rpx '>性别</view>
-    <text style='width:400rpx;text-align: right;'>{{userInfo.gender==1?"男":"女"}}</text>
-    <image style='height:50rpx;width:50rpx;position: relative;left:40rpx ' src='../../images/进入.png '></image>
+    <text style='width:430rpx;text-align: right;'>{{userInfo.gender==1?"男":"女"}}</text>
   </view>
 
   <view class='down-line'></view>
 
   <view style='display:flex;flex-direction:row;align-items: center;width: 100%;height: 80rpx;background-color:white;font-size:30rpx;'>
     <view style='position:relative;padding-left: 30rpx;width:200rpx '>电话</view>
-    <input bindblur='phonenum' style='width:400rpx;text-align: right;' value='{{userInfo.phonenum}}'></input>
-    <image style='height:50rpx;width:50rpx;position: relative;left:40rpx ' src='../../images/进入.png '></image>
+    <input bindblur='phonenum' style='width:430rpx;text-align: right;' value='{{userInfo.phonenum}}'></input>
   </view>
 
   <view class='down-line-5'></view>
 
   <view style='display:flex;flex-direction:row;align-items: center;width: 100%;height: 80rpx;background-color:white;font-size:30rpx;'>
     <view style='position:relative;padding-left: 30rpx;width:200rpx '>省份</view>
-    <input bindblur='province' style='width:400rpx;text-align: right;' value='{{userInfo.province}}'></input>
-    <image style='height:50rpx;width:50rpx;position: relative;left:40rpx ' src='../../images/进入.png '></image>
+    <input bindblur='province' style='width:430rpx;text-align: right;' value='{{userInfo.province}}'></input>
   </view>
 
   <view class='down-line'></view>
 
   <view style='display:flex;flex-direction:row;align-items: center;width: 100%;height: 80rpx;background-color:white;font-size:30rpx;'>
     <view style='position:relative;padding-left: 30rpx;width:200rpx '>城市</view>
-    <input bindblur='city' style='width:400rpx;text-align: right;' value='{{userInfo.city}}'></input>
-    <image style='height:50rpx;width:50rpx;position: relative;left:40rpx ' src='../../images/进入.png '></image>
+    <input bindblur='city' style='width:430rpx;text-align: right;' value='{{userInfo.city}}'></input>
   </view>
 
   <view class='down-line'></view>

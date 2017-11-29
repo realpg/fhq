@@ -1,9 +1,6 @@
 // pages/product/product.js
 var util = require('../../utils/util.js')
 var vm = null
-
-var base64 = require("../base64/base64.js");
-
 Page({
   data: {
     officeid: '',
@@ -19,8 +16,6 @@ Page({
     vm = this
 
     vm.setData({
-      icon20: base64.icon20,
-      icon60: base64.icon60,
       officeid: options.officeid
     });
     // console.log("officeid" + JSON.stringify(vm.data.officeid))
@@ -28,6 +23,7 @@ Page({
   },
   //获取商品信息
   loadOfficePage: function () {
+    util.showLoading('获取商品信息');
     var param = {
       id: vm.data.officeid
     }
@@ -37,7 +33,6 @@ Page({
         var good_info = ret.data.ret.good_info
         var tw_steps = ret.data.ret.tw_steps
         var title = ret.data.ret.good_info.title
-        // bookInfo.images_medium = util.qiniuUrlTool(bookInfo.images_medium, "folder_index")
         vm.setData({
           good_info: good_info,
           tw_steps: tw_steps,

@@ -24,11 +24,12 @@ Page({
   onLoad: function (options) {
     vm = this
     vm.loadOfficePage(options)//加载商品详情
-    vm.getListByUserId()//加载企业信息列表
+    
   },
   //加载商品详情
   loadOfficePage: function (e) {
     // console.log("1111111111111111" + JSON.stringify(e))
+    util.showLoading('正在加载数据');
     var param = {
       id: e.officeid
     }
@@ -39,7 +40,6 @@ Page({
         var tw_steps = ret.data.ret.tw_steps
         var title = ret.data.ret.good_info.title
         var price = ret.data.ret.good_info.price / 100
-        // bookInfo.images_medium = util.qiniuUrlTool(bookInfo.images_medium, "folder_index")
         vm.setData({
           good_info: good_info,
           tw_steps: tw_steps,
@@ -104,10 +104,11 @@ Page({
     // 只有大于一件的时候，才能normal状态，否则disable状态  
     var minusStatus = num <= 1 ? 'disabled' : 'normal';
     // 将数值与状态写回 
+    var money = (vm.data.price * num).toFixed(2)
     this.setData({
       num: num,
       minusStatus: minusStatus,
-      money: vm.data.price * num
+      money: money
     });
   },
   /* 点击加号 */
@@ -118,10 +119,11 @@ Page({
     // 只有大于一件的时候，才能normal状态，否则disable状态  
     var minusStatus = num < 1 ? 'disabled' : 'normal';
     // 将数值与状态写回  
+    var money = (vm.data.price * num).toFixed(2)    
     this.setData({
       num: num,
       minusStatus: minusStatus,
-      money: vm.data.price * num
+      money: money
     });
   },
   /* 输入框事件 */
@@ -154,9 +156,10 @@ Page({
 
   recharge: function (e) {
     var en_id = vm.data.en_id
+    var good_id = vm.data.good_info.id
     var param = ({
       en_id: en_id,
-      good_id: 1,
+      good_id: good_id,
       count: vm.data.num
     })
     util.prepay(param, function (res) {
@@ -170,14 +173,14 @@ Page({
         'paySign': msgObj.paySign,
         'success': function (res) {
           console.log("pay success：" + JSON.stringify(res))
-          // var userInfo = app.globalData.userInfo
-          // userInfo.level = level_id
-          // app.globalData.userInfo = userInfo
-          // app.storeUserInfo(userInfo)  //更新缓存
-          // console.log("更新缓存：" + JSON.stringify(app.globalData.userInfo))
-          wx.navigateTo({
-            url: '/pages/orders/orders',
+
+          // wx.navigateTo({
+          //   url: '/pages/mine/mine'
+          // })
+          wx.switchTab({
+            url: '/pages/mine/mine'
           })
+
         },
         'fail': function (res) {
           console.log("fail" + JSON.stringify(res))
@@ -196,7 +199,7 @@ Page({
    * 生命周期函数--监听页面显示
    */
   onShow: function () {
-
+    vm.getListByUserId()//加载企业信息列表
   },
 
   /**

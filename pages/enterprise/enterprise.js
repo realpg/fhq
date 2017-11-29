@@ -12,6 +12,7 @@ Page({
 
   //获取用户企业信息列表
   getListByUserId: function () {
+    util.showLoading('正在加载数据');
     util.getListByUserId({}, function (ret) {
       console.log("getListByUserId:" + JSON.stringify(ret));
       if (ret.data.code == "200") {
@@ -43,6 +44,8 @@ Page({
     wx.showModal({
       title: '提示',
       content: '是否删除？',
+      confirmColor: "#ffcc00",
+      confirmText: "删除",
       success: function (res) {
         if (res.confirm) {
           //获取列表中要删除项的下标  

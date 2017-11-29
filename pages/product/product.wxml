@@ -14,7 +14,14 @@
         <view class='office-font-price' style='margin-left:30rpx ;float: right;position: relative;width:240rpx;text-align:right;'>{{good_info.show_price}}</view>
       </view>
 
-      <view style='height:20rpx;'></view>
+      <block wx:if="{{good_info.type==0}}">
+        <view style='display:flex;flex-direction:row;align-items:center;margin-top:0rpx;'>
+          <image src='../../images/address.png' style='width:25rpx;height:25rpx;margin-left:10rpx;'></image>
+          <view class="text-oneline office-font" style='margin-left:10rpx;'>{{good_info.addr}}</view>
+        </view>
+      </block>
+
+      <view style='height:10rpx;'></view>
       <view style='color:#AAA;width:690rpx;'>
         {{good_info.desc}}
       </view>

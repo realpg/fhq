@@ -10,7 +10,7 @@
   <!-- 导航按钮 -->
   <view class="page__bd" style='height:164rpx;'>
     <navigator url="/pages/myMessage/myMessage" class="weui-grid-grating" hover-class="click-class" data-myType='2'>
-      <image class="weui-grid__icon-copy" src="../../images/my1.png" mode="scaleToFill" />
+      <image class="weui-grid__icon-copy" style="border-radius:26rpx;" src="../../images/my1.png" mode="scaleToFill" />
       <view class="weui-grid__label">我的资料</view>
     </navigator>
     <navigator url="/pages/enterprise/enterprise" class="weui-grid-grating" hover-class="click-class" data-myType='0'>
@@ -23,9 +23,9 @@
     </navigator>
   </view>
 
-   <view style='height:2rpx;background-color:white;'></view> 
+  <view style='height:2rpx;background-color:white;'></view>
   <block wx:if="{{orders!=null&&orders!=''}}">
-  <view class='down-line-5'></view>
+    <view class='down-line-5'></view>
     <view class='width:100%;' style='padding-top:20rpx;'>
       <view class="font-size-17" style='line-height:33rpx;font-size:30rpx;border-left:2px solid #e75110;padding-left:20rpx;font-weight:bold;margin:0px 30rpx;'>
         我的订单
@@ -37,10 +37,12 @@
 
 </view>
 <block wx:for="{{orders}}">
-  <view class='flex-row' style='height:90rpx;align-items:center;' data-id='{{item.id}}' bindtap='jumpOrders'>
-    <view style='font-size:30rpx;padding-left:50rpx;width:500rpx;line-height:90rpx;'>{{item.good.good_info.title}}</view>
-    <view style='width:150rpx;text-align:right;line-height:90rpx;color:#AAA;'>{{item.status}}</view>
-    <image src='../../images/进入.png' style='width:40rpx;height:40rpx;'></image>
-  </view>
-  <view style='height:2rpx;background-color:white'></view>
+  <block wx:if="{{item.status=='支付成功'}}">
+    <view class='flex-row' style='height:90rpx;align-items:center;' data-id='{{item.id}}' bindtap='jumpOrders'>
+      <view style='font-size:30rpx;padding-left:50rpx;width:500rpx;line-height:90rpx;'>{{item.good.good_info.title}}</view>
+      <view style='width:150rpx;text-align:right;line-height:90rpx;color:#AAA;'>{{item.status}}</view>
+      <image src='../../images/info.png' style='width:40rpx;height:40rpx;'></image>
+    </view>
+    <view style='height:2rpx;background-color:white'></view>
+  </block>
 </block>

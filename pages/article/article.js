@@ -3,7 +3,7 @@ var util = require('../../utils/util.js')
 var vm = null
 Page({
   data: {
-    messageid: "3",
+    messageid: "",
     zx_info: {},//简介政策咨询信息
     tw_steps: [],//图文步骤
     title: null,
@@ -15,9 +15,9 @@ Page({
     // }
     vm = this
     vm.setData({
-      // messageid : options.messageid
+      messageid : options.messageid
     });
-    // console.log("officeid" + JSON.stringify(vm.data.officeid))
+    console.log("officeid" + JSON.stringify(vm.data.officeid))
     vm.loadmessagePage()  //加载图文信息
   },
 

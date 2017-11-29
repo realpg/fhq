@@ -19,11 +19,11 @@
               <text class="font-size-16  margin-left-5 text-oneline">{{author}}</text>
             </view>
           </view>
-          <view style='-webkit-box-flex: 1.5;-webkit-flex: 1.5;flex: 1.5;'>
+          <view style='-webkit-box-flex: 1.6;-webkit-flex: 1.6;flex: 1.6;'>
             <view class="placeholder  margin-top-5" style="display:flex;align-items:center;float:right;">
               <image wx:if="{{flag == 0}}" src="" class="opt-icon-sma margin-right-5"></image>
               <image wx:elif="{{flag == 1}}" src="../../images/fire.png" class="opt-icon-sma margin-right-5"></image>
-              <text wx:if="{{flag == 1}}" class="font-size-12  margin-right-10 grey-font">热门</text>
+              <text wx:if="{{flag == 1}}" class="font-size-12  margin-right-10 grey-font">hot</text>
 
               <image src="../../images/show_n.png" class="opt-icon-sma margin-right-5"></image>
               <text class="font-size-12  margin-right-10 grey-font">{{show_num}}</text>
@@ -50,7 +50,7 @@
         <view style='text-align:right;float:right; width:150rpx;text-align:right;color:#ffcc00;font-size:30rpx;margin-top:0rpx;'>{{show_price}}</view>
       </view>
 
-      <view class="text-oneline margin-bottom-5 office-font margin-top-5" style='margin-left:10rpx;'>{{desc}}</view>
+      <view class="text-oneline margin-bottom-5 office-font margin-top-10" style='margin-left:10rpx;'>{{desc}}</view>
 
       <view style='display:flex;flex-direction:row;align-items:center;margin-top:0rpx;'>
         <image src='../../images/address.png' style='width:25rpx;height:25rpx;margin-left:10rpx;'></image>

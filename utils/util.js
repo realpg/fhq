@@ -33,7 +33,7 @@ function qiniuUrlTool(img_url, type) {
       qn_img_url = img_url + "?imageView2/2/w/450/q/75/interlace/1";
       break;
     case "message_hi":        //首页图片
-      qn_img_url = img_url + "?imageView2/2/w/355/h/180/interlace/1";
+      qn_img_url = img_url + "?imageView2/2/w/710/h/360/interlace/1";
       break;
     case "work_step":           //编辑的画夹步骤
       qn_img_url = img_url + "?imageView2/2/w/750/interlace/1";
@@ -257,17 +257,19 @@ function showToast(msg, img) {
   }
 }
 //展示modal
-function showModal(title, content, confirmCallBack, cancelCallBack) {
+function showModal(title, content) {
   wx.showModal({
     title: title,
     content: content,
+    showCancel:false,
+    confirmColor: "#ffcc00",
     success: function (res) {
       if (res.confirm) {
         console.log('用户点击确定')
-        confirmCallBack(res)
+        // confirmCallBack(res)
       } else if (res.cancel) {
         console.log('用户点击取消')
-        cancelCallBack(res)
+        // cancelCallBack(res)
       }
     }
   })

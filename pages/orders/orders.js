@@ -26,8 +26,10 @@ Page({
   },
 
   onLoad: function (options) {
+    
     vm = this
     vm.getPayById(options.id)
+
   },
 
 
@@ -43,6 +45,7 @@ Page({
   },
 
   getPayById:function(obj){
+    util.showLoading('正在加载数据');
     var param = {
       id: obj
     }
@@ -59,14 +62,6 @@ Page({
     },null)
   },
 
-  // handleZanTabChange(e) {
-  //   var componentId = e.componentId;
-  //   var selectedId = e.selectedId;
-  //   this.setData({
-  //     `${componentId}.selectedId`: selectedId
-  //   });
-  // }
-
   // 导航切换监听
   navbarTap: function (e) {
     console.debug(e);
@@ -75,5 +70,12 @@ Page({
       'tab1.selectedId': e.currentTarget.dataset.idx
     })
   },
+
+  /**
+* 用户点击右上角分享
+*/
+  onShareAppMessage: function () {
+
+  }
 
 });

@@ -1,48 +1,25 @@
 <!--pages/article/article.wxml-->
-<!-- <view class="book-bg">
-  <image class="image_frame" src="{{zx_info.img}}" mode="aspectFill"></image>
-  <view class="font-size-14 tw-title text-oneline tw-title-div" style="background-image: url('../../images/text_bmask.png');">
-    <text wx:if="{{zx_info.flag == 1}}" class="margin-left-10" style="margin-right:50px;">推荐</text>
-  </view>
-  <view class="page">
-    <view class="page__hd" style='padding: 0px 0px'>
-      <view class="page__title text-oneline" style='text-align:center;'>{{zx_info.title}}</view>
-    <view class="page__desc text-oneline" style='text-align:center;'>{{zx_info.author}}</view>
-    </view>
-    <view class="page__bd">
-      <view class="weui-article">
-        <view class="weui-article__section">
-        <block wx:for="{{tw_steps}}">
-          <view class="weui-article__section">
-            <view class="weui-article__h3">{{index+1}} 节标题</view>
-            <view class="weui-article__p">
-              {{item.text}}
-            </view>
-          </view>
-         </block>
-        </view>
-      </view>
-    </view>
-  </view>
-</view> -->
-
 <view class="book-bg">
   <view style='weight:100%;text-align: center;margin-top:20rpx'>
     <image class="image_frame" src="{{zx_info.img}}" mode="aspectFill"></image>
   </view>
 
   <view style='display: flex;flex-direction: row; margin-bottom:20rpx'>
-    <view class='' style='padding-left: 30rpx;float: left;width: 600rpx;position: relative;'>
-      <view class='office-title-font' style='font-weight:bold;'>
-        {{zx_info.title}}
+    <view style='display: flex;flex-direction: row; margin-bottom:20rpx'>
+      <view class='' style='padding-left: 30rpx;float: left;width: 700rpx;position: relative;'>
+
+        <view class='flex-row' style='width:100%;'>
+          <view class='office-title-font' style='font-weight:bold;width:400rpx;'>
+            {{zx_info.title}}
+          </view>
+          <view class='office-font-price' style='margin-left:30rpx ;float: right;position: relative;width:240rpx;text-align:right;'>{{zx_info.author}}</view>
+        </view>
+
+        <view style='height:10rpx;'></view>
+        <view style='color:#AAA;width:690rpx;'>
+          {{zx_info.intro}}
+        </view>
       </view>
-      <view style='height:20rpx;'></view>
-      <view style='color:#AAA;'>
-        {{zx_info.intro}}
-      </view>
-    </view>
-    <view class='office-font-price' style='position: relative;float: right;height:60rpx'>
-      {{zx_info.author}}
     </view>
   </view>
 

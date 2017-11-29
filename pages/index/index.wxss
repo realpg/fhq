@@ -31,5 +31,5 @@
 
 page {
   display: block;
-  background-color: white;
+  background-color: #f4f4f4;
 }

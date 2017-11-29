@@ -49,6 +49,7 @@ Page({
 
   getPayListByUserId: function () {
     util.getPayListByUserId({}, function (res) {
+      util.showLoading("加载订单中")    
       var orders = res.data.ret
       for (var i = 0; i < orders.length; i++) {
         if (orders[i].status == 0) {

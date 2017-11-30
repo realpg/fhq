@@ -9,16 +9,13 @@ Page({
     title: null,
   },
   onLoad: function (options) {
-    // console.log("officeid:"+JSON.stringify(options.officeid))
-    // if (util.judgeIsAnyNullStr(options.officeid)) {
-    //   return;
-    // }
+    if (util.judgeIsAnyNullStr(options.officeid)) {
+      return;
+    }
     vm = this
-
     vm.setData({
       officeid: options.officeid
     });
-    // console.log("officeid" + JSON.stringify(vm.data.officeid))
     vm.loadOfficePage()  //加载商品信息
   },
   //获取商品信息
@@ -45,7 +42,7 @@ Page({
       var title = vm.data.title
       wx.setNavigationBarTitle({ title: title })
     }, function (err) {
-      util.showModal("提示","您的网络似乎有一些问题")
+      util.showToast('您的网络似乎有点问题')
     })
   },
   gotobuy: function () {

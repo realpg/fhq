@@ -1,5 +1,5 @@
 <import src="../templates/messageInfoTpl/messageInfoTpl.wxml" />
-  <!-- <scroll-view class="" style="height: {{systemInfo.windowHeight}}px;" scroll-y="true" bindscrolltolower="bindDownLoad"> -->
+<!-- <scroll-view class="" style="height: {{systemInfo.windowHeight}}px;" scroll-y="true" bindscrolltolower="bindDownLoad"> -->
 
 <view class="page">
   <!-- 轮播图 -->
@@ -32,12 +32,16 @@
   <view class="line-text font-size-14" style='line-height:30rpx;'>
     猜您喜欢
   </view>
+  <!-- 办公商品列表 -->
+  <block wx:for="{{workProduct}}">
+    <template is="productList" data="{{...item}}" />
+  </block>
 
-
-    <!-- 办公商品列表 -->
-    <block wx:for="{{banli}}">
-      <template is="productList" data="{{...item}}" />
-    </block>
-
+  <view style="display:{{show ? 'flex' : 'none'}};flex-direction: column;align-items:center;">
+    <view style='height:50rpx'></view>
+    <image src='../../images/cry.png' style='width:150rpx;height:150rpx;'></image>
+    <view style='height:50rpx'></view>
+    <text style='font-size:25srpx'>未能搜索到商品</text>
+  </view>
 </view>
-  <!-- </scroll-view> -->
+<!-- </scroll-view> -->

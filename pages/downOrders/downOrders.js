@@ -60,19 +60,20 @@ Page({
 
   //加载企业信息列表
   getListByUserId: function () {
+    console.log("加载企业信息")
+
     util.getListByUserId({}, function (res) {
       if (!res.data.result) {
-        console.log("222222" + JSON.stringify(res))
-        util.showToast('获取失败')
+        util.showToast('获取数据失败')
         return;
       }
+      console.log("加载企业信息" + JSON.stringify(res))
       var enterprise = res.data.ret
       // 判断企业是否为空
       if (util.judgeIsAnyNullStr(enterprise)) {
         vm.setData({
           enterpriseIsNull: true
         })
-        // console.log("是否为空" + vm.data.enterpriseIsNull)
         return
       }
 
@@ -175,7 +176,6 @@ Page({
       count: vm.data.num
     })
     util.prepay(param, function (res) {
-      // console.log("支付" + JSON.stringify(res))
       if (!res.data.result) {
         util.showToast('支付失败')
         return;
@@ -205,51 +205,16 @@ Page({
     }, null)
   },
   /**
-   * 生命周期函数--监听页面初次渲染完成
-   */
-  onReady: function () {
-
-  },
-
-  /**
-   * 生命周期函数--监听页面显示
-   */
-  onShow: function () {
-    vm.getListByUserId()//加载企业信息列表
-  },
-
-  /**
-   * 生命周期函数--监听页面隐藏
-   */
-  onHide: function () {
-
-  },
-
-  /**
-   * 生命周期函数--监听页面卸载
-   */
-  onUnload: function () {
-
-  },
-
-  /**
-   * 页面相关事件处理函数--监听用户下拉动作
-   */
-  onPullDownRefresh: function () {
-
-  },
-
-  /**
-   * 页面上拉触底事件的处理函数
-   */
-  onReachBottom: function () {
-
-  },
-
-  /**
    * 用户点击右上角分享
    */
   onShareAppMessage: function () {
 
-  }
+  },
+  /**
+ * 生命周期函数--监听页面显示
+ */
+  onShow: function () {
+    vm.getListByUserId()
+  },
+
 })

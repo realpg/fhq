@@ -2,7 +2,15 @@
 <import src="../templates/messageInfoTpl/messageInfoTpl.wxml" />
 
 <view class="card-bg">
-  <template is="productList" data="{{...good_info}}" />
+  <template wx:if="{{good_info.type==0}}" is="productList" data="{{...good_info}}" />
+  <template wx:else is="orderProduct" data="{{...good_info}}" />
+
+  <view wx:if="{{good_info.type==1}}" class='border-bottom-3px' style='display: flex;flex-direction: row;align-items: center;width: 100%;height: 90rpx;' catchtap="toOrder">
+    <text style='font-size: 34rpx;color: black;font-weight:blod;margin: 20rpx 30rpx;width: 40%;'>价格</text>
+    <text style='font-size: 28rpx;color: gray; position: relative;right: 20rpx;width: 60%;text-align: right;' bindtap='addEnterprise'>{{good_info.show_price}}</text>
+    <image style='width: 30rpx;height: 30rpx;position: relative;right: 10rpx;' src="../../images/info.png"></image>
+  </view>
+
   <view class='border-bottom-3px' style=' padding-bottom:25rpx;'>
     <view class="stepper" style='position: relative;'>
       <view style='position: absolute; width:100px; height:100%; left:-560rpx;text-align:center' class='pay-number-font'>购买数量：</view>
@@ -35,10 +43,10 @@
         <view class="weui-cell__ft weui-cell__ft_in-radio" style='align-items: center;' wx:if="{{item.checked}}">
           <image style='width: 35rpx;height: 35rpx;position: relative;right: 10rpx;top:5rpx;' src='../../images/true.png'></image>
         </view>
-
       </label>
     </radio-group>
   </view>
+
   <view style='width: 750rpx;height: 2rpx;background: lightgray;'></view>
 
   <view style='display: flex;flex-direction: row;align-items: center;width: 100%;height: 90rpx;font-size:28rpx'>

@@ -7,9 +7,10 @@ Page({
   data: {
     systemInfo: {},
     swipers: [],  //广告图信息
-    productInfo: [],//商品列表
+    productInfo: [],//获取首页商品列表
     productUrl: { url: "/pages/product/product" },
-    banli: [],
+    workProduct: [],//商品列表
+    show: false
   },
 
   onLoad: function (options) {
@@ -26,37 +27,11 @@ Page({
   },
   //加载
   onShow: function () {
+    vm.setData({
+      workProduct: []
+    })
     vm.setADSwiper()
     vm.getProductList()
-  },
-
-  //该方法绑定了页面滑动到底部的事件
-  bindDownLoad: function () {
-    util.showLoading("加载")
-    console.log("bindDownLoad执行")
-    vm.GetList();
-  },
-
-  //触底加载信息 暂时保留
-  GetList: function () {
-    var param = ({
-      type: '0',
-      page: page
-    })
-    console.log("getList执行" + page)
-    util.getProductList(param, function (res) {
-      console.log("返回参数" + JSON.stringify(res))
-      var banliList = vm.data.banli;
-      var resList = res.data.ret.data
-      for (var i = 0; i < resList.length; i++) {
-        banliList.push(resList[i]);
-      }
-      vm.setData({
-        banli: banliList
-      });
-      page++;
-      util.hideLoading()
-    })
   },
 
   //获取商品信息
@@ -70,15 +45,20 @@ Page({
       if (!res.data.result) {
         util.showToast('获取失败')
         return;
+        vm.setData({
+          show: true
+        })
       }
       console.log("办理类商品" + JSON.stringify(res))
       if (res.data.code == "200") {
         vm.setData({
-          banli: res.data.ret.data
+          workProduct: res.data.ret.data
         })
       }
     }, function (err) {
-      util.showModal("提示", "您的网络似乎有一些问题")
+      vm.setData({
+        show: true
+      })
     })
   },
   // 跳转到商品详情页

@@ -1,7 +1,15 @@
 <!--pages/message/message.wxml-->
 <import src="/pages/templates/messageInfoTpl/messageInfoTpl.wxml" />
-<scroll-view class="" style="height: {{systemInfo.windowHeight}}px;" scroll-y="true" bindscrolltolower="pullUpLoadZuoPin">
+<scroll-view class="" style="height: {{systemInfo.windowHeight}}px;" scroll-y="true">
   <block wx:for="{{messageList}}">
     <template is="twListIndex" data="{{...item}}" />
   </block>
+
+  <view style="display:{{show ? 'flex' : 'none'}};flex-direction: column;align-items:center;">
+    <view style='height:350rpx'></view>
+    <image src='../../images/cry.png' style='width:150rpx;height:150rpx;'></image>
+    <view style='height:50rpx'></view>
+    <text style='font-size:25srpx'>未能搜索到信息</text>
+  </view>
+  
 </scroll-view>

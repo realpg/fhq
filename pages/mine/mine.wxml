@@ -1,6 +1,6 @@
 <view class=''>
 
-  <view class="userinfo-order" style='background-image:url({{bg.img}})'>
+    <view class="userinfo-order" style='background-image:url({{bg.img}})'>  
     <view style='height:35rpx'></view>
     <image class="userinfo-avatar" src="{{userInfo.avatar}}" background-size="cover"></image>
     <text class="userinfo-nickname">{{userInfo.nick_name}}</text>
@@ -24,14 +24,14 @@
   </view>
 
   <view style='height:2rpx;background-color:white;'></view>
-  <block wx:if="{{orders!=null&&orders!=''}}">
+   <block wx:if="{{orders!=null&&orders!=''}}"> 
     <view class='down-line-5'></view>
     <view class='width:100%;' style='padding-top:20rpx;'>
       <view class="font-size-17" style='line-height:33rpx;font-size:30rpx;border-left:2px solid #e75110;padding-left:20rpx;font-weight:bold;margin:0px 30rpx;'>
         我的订单
       </view>
     </view>
-  </block>
+   </block> 
 
   <view style='height:20rpx;' class='down-line'></view>
 
@@ -46,3 +46,10 @@
     <view style='height:2rpx;background-color:white'></view>
   </block>
 </block>
+
+ <view style="display:{{show ? 'flex' : 'none'}};flex-direction: column;align-items:center;">
+    <view style='height:150rpx'></view>
+    <image src='../../images/cry.png' style='width:150rpx;height:150rpx;'></image>
+    <view style='height:50rpx'></view>
+    <text style='font-size:25srpx'>未能搜索到订单</text>
+  </view>

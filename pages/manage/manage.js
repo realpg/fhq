@@ -4,7 +4,8 @@ var vm = null
 Page({
   data: {
     productList: [],
-    page: ''
+    page: '',
+    show: false
   },
   onLoad: function (options) {
     vm = this
@@ -19,14 +20,26 @@ Page({
       'page': vm.data.page
     }
     util.getProductList(param, function (res) {
+      if (!res.data.result) {
+        util.showToast('获取失败')
+        vm.setData({
+          show: true
+        })
+        return;
+      }
       util.showLoading("加载中")
       console.log("办理数据" + JSON.stringify(res))
       var productList = res.data.ret.data
-      console.log("111111" + JSON.stringify(productList))
       vm.setData({
         productList: productList
       })
-    }, null)
+    }, function (err) {
+      // console.log("6666666666")
+      util.showToast('获取失败')
+      vm.setData({
+        show: true
+      })
+    })
   },
 
   jumpProduct: function (e) {

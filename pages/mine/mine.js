@@ -7,7 +7,8 @@ Page({
     systemInfo: {},
     userInfo: {},
     bg: { img: "http://ozhs589fk.bkt.clouddn.com/bg.png?imageView2/1/w/375/h/150/interlace/1" },
-    orders: []
+    orders: [],
+    show:false
   },
 
   //事件处理函数
@@ -27,7 +28,6 @@ Page({
         systemInfo: res
       })
     })
-    vm.getByIdWithToken()
   },
 
   //根据id获取用户信息
@@ -36,6 +36,9 @@ Page({
     util.getByIdWithToken({ id: id }, function (ret) {
       if (!ret.data.result) {
         util.showToast('获取失败')
+        vm.setData({
+          show: true
+        })
         return;
       }
       console.log("getByIdWithToken" + JSON.stringify(ret))
@@ -43,16 +46,23 @@ Page({
       vm.setData({
         userInfo: msgObj
       });
+    },function(err){
+      vm.setData({
+        show:true
+      })
     })
   },
 
   getPayListByUserId: function () {
     util.getPayListByUserId({}, function (res) {
       if (!res.data.result) {
+        vm.setData({
+          show: true
+        })
         util.showToast('获取失败')
         return;
       }
-      util.showLoading("加载订单中")    
+      util.showLoading("加载订单中")
       var orders = res.data.ret
       for (var i = 0; i < orders.length; i++) {
         if (orders[i].status == 0) {
@@ -72,7 +82,11 @@ Page({
       })
       console.log("根据id获取订单" + JSON.stringify(vm.data.orders))
 
-    }, null)
+    }, function (err) {
+      vm.setData({
+        show: true
+      })
+    })
   },
 
   jumpOrders: function (e) {
@@ -85,6 +99,7 @@ Page({
    * 生命周期函数--监听页面初次渲染完成
    */
   onReady: function () {
+    vm.getByIdWithToken()
     vm.getPayListByUserId()
   },
 

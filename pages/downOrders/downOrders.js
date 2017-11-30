@@ -24,7 +24,7 @@ Page({
   onLoad: function (options) {
     vm = this
     vm.loadOfficePage(options)//加载商品详情
-    
+
   },
   //加载商品详情
   loadOfficePage: function (e) {
@@ -35,6 +35,10 @@ Page({
     }
     util.getOfficePageByOfficeId(param, function (ret) {
       console.log("getOfficePageByOfficeId :" + JSON.stringify(ret))
+      if (!ret.data.result) {
+        util.showToast('获取失败')
+        return;
+      }
       if (ret.data.code == "200") {
         var good_info = ret.data.ret.good_info
         var tw_steps = ret.data.ret.tw_steps
@@ -57,22 +61,30 @@ Page({
   //加载企业信息列表
   getListByUserId: function () {
     util.getListByUserId({}, function (res) {
+      if (!res.data.result) {
+        console.log("222222" + JSON.stringify(res))
+        util.showToast('获取失败')
+        return;
+      }
       var enterprise = res.data.ret
       // 判断企业是否为空
       if (util.judgeIsAnyNullStr(enterprise)) {
         vm.setData({
           enterpriseIsNull: true
         })
-        console.log("是否为空" + vm.data.enterpriseIsNull)
+        // console.log("是否为空" + vm.data.enterpriseIsNull)
         return
       }
+
       enterprise[0].checked = true
       vm.setData({
         enterprise: enterprise,
         en_id: enterprise[0].id
       })
       console.log("getListByUserId" + JSON.stringify(vm.data.enterprise))
-    }, null)
+    }, function (err) {
+      util.showModal("提示", "您的网络似乎有一些问题")
+    })
   },
 
   radioChange: function (e) {
@@ -119,7 +131,7 @@ Page({
     // 只有大于一件的时候，才能normal状态，否则disable状态  
     var minusStatus = num < 1 ? 'disabled' : 'normal';
     // 将数值与状态写回  
-    var money = (vm.data.price * num).toFixed(2)    
+    var money = (vm.data.price * num).toFixed(2)
     this.setData({
       num: num,
       minusStatus: minusStatus,
@@ -163,7 +175,11 @@ Page({
       count: vm.data.num
     })
     util.prepay(param, function (res) {
-      console.log("支付" + JSON.stringify(res))
+      // console.log("支付" + JSON.stringify(res))
+      if (!res.data.result) {
+        util.showToast('支付失败')
+        return;
+      }
       var msgObj = res.data.ret
       wx.requestPayment({
         'timeStamp': msgObj.timeStamp + "",

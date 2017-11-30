@@ -27,11 +27,6 @@ Page({
         systemInfo: res
       })
     })
-    // var userInfo = app.globalData.userInfo  
-    // vm.setData({
-    //   userInfo: userInfo
-    // });
-    // console.log("信息" + JSON.stringify(userInfo))
     vm.getByIdWithToken()
   },
 
@@ -39,6 +34,10 @@ Page({
   getByIdWithToken: function (e) {
     var id = app.globalData.userInfo.id
     util.getByIdWithToken({ id: id }, function (ret) {
+      if (!ret.data.result) {
+        util.showToast('获取失败')
+        return;
+      }
       console.log("getByIdWithToken" + JSON.stringify(ret))
       var msgObj = ret.data.ret;
       vm.setData({
@@ -49,6 +48,10 @@ Page({
 
   getPayListByUserId: function () {
     util.getPayListByUserId({}, function (res) {
+      if (!res.data.result) {
+        util.showToast('获取失败')
+        return;
+      }
       util.showLoading("加载订单中")    
       var orders = res.data.ret
       for (var i = 0; i < orders.length; i++) {

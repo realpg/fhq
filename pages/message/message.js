@@ -38,8 +38,10 @@ Page({
       vm.setData({
         messageList: messageList
       })
-      console.log("资讯页数据1" + JSON.stringify(vm.data.messageList))
-    }, null)
+      console.log("资讯页数据" + JSON.stringify(vm.data.messageList))
+    }, function (err) {
+      util.showModal("提示", "您的网络似乎有一些问题")
+    })
 
   },
 
@@ -94,7 +96,6 @@ Page({
   },
   //设置作品列表
   setFolderList: function (msgObj, currentNavbar) {
-    // console.log("setFolderList msgObj:" + JSON.stringify(msgObj) + "  currentNavbar:" + currentNavbar)
     //推荐
     if (currentNavbar == 0) {
       if (start_r == 0) {

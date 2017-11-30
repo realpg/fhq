@@ -494,17 +494,7 @@ Page({
         })
       }
     })
-    // wx.navigateBack({
-    //   delta:1
-    // })
-    // wx.navigateTo({
-    //   url: '/pages/product/product?officeid=' + officeid
-    // })
   },
-  // formReset: function () {
-  //   console.log('form发生了reset事件')
-  // },
-
   /**
    * 生命周期函数--监听页面初次渲染完成
    */

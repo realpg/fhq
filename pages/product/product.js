@@ -29,20 +29,24 @@ Page({
     }
     util.getOfficePageByOfficeId(param, function (ret) {
       console.log("getOfficePageByOfficeId :" + JSON.stringify(ret))
-      if (ret.data.code == "200") {
-        var good_info = ret.data.ret.good_info
-        var tw_steps = ret.data.ret.tw_steps
-        var title = ret.data.ret.good_info.title
-        vm.setData({
-          good_info: good_info,
-          tw_steps: tw_steps,
-          title: title
-        })
-        // console.log("商品详情" + JSON.stringify(vm.data.good_info))
-        var title = vm.data.title
-        wx.setNavigationBarTitle({ title: title })
+      if (util.judgeIsAnyNullStr(ret)) {
+        util.showToast('获取失败')
+        return;
       }
-    }, null)
+      var good_info = ret.data.ret.good_info
+      var tw_steps = ret.data.ret.tw_steps
+      var title = ret.data.ret.good_info.title
+      vm.setData({
+        good_info: good_info,
+        tw_steps: tw_steps,
+        title: title
+      })
+      // console.log("商品详情" + JSON.stringify(vm.data.good_info))
+      var title = vm.data.title
+      wx.setNavigationBarTitle({ title: title })
+    }, function (err) {
+      util.showModal("提示","您的网络似乎有一些问题")
+    })
   },
   gotobuy: function () {
     var officeid = vm.data.officeid

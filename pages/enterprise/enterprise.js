@@ -55,11 +55,13 @@ Page({
             id: id
           }
           util.deleteEnterpriseById(param, function (res) {
+            if (!res.data.result) {
+              util.showToast('获取失败')
+              return;
+            }
             console.log("删除企业" + JSON.stringify(res))
             vm.getListByUserId()
           }, null)
-
-         
 
         } else {
           // initdata(vm)

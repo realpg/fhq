@@ -28,6 +28,10 @@ Page({
   getByIdWithToken: function (e) {
     var id = app.globalData.userInfo.id
     util.getByIdWithToken({ id: id }, function (ret) {
+      if (!ret.data.result) {
+        util.showToast('获取失败')
+        return;
+      }
       console.log("getByIdWithToken" + JSON.stringify(ret))
       var msgObj = ret.data.ret;
       vm.setData({
@@ -139,6 +143,10 @@ Page({
       gender:gender,
     })
     util.updateUserInfo(param, function (res) {
+      if (!res.data.result) {
+        util.showToast('获取失败')
+        return;
+      }
       console.log(JSON.stringify(res))
       vm.openToast()
     }, null)

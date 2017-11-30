@@ -113,6 +113,7 @@ function wxRequest(url, param, method, successCallback, errorCallback) {
     },
     fail: function (err) {
       console.log("wxRequest fail:" + JSON.stringify(err))
+      errorCallback(err)
       hideLoading()
     }
   });

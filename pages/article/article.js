@@ -26,6 +26,11 @@ Page({
       id: vm.data.messageid
     }
     util.getMessagegetById(param, function (ret) {
+      if (!ret.data.result) {
+        // console.log("222222" + JSON.stringify(res))
+        util.showToast('获取失败')
+        return;
+      }
       console.log("getMessagegetById :" + JSON.stringify(ret))
       if (ret.data.code == "200") {
         var zx_info = ret.data.ret.zx_info
@@ -40,7 +45,9 @@ Page({
         var title = vm.data.title
         wx.setNavigationBarTitle({ title: title })
       }
-    }, null)
+    }, function(err){
+      util.showModal("提示", "您的网络似乎有一些问题")
+    })
   },
 
   /**

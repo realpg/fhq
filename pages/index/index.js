@@ -18,19 +18,16 @@ Page({
     //初始化sysInfo
     app.getSystemInfo(function (res) {
       console.log("getSystemInfo:" + JSON.stringify(res));
-
       vm.setData({
         systemInfo: res
       })
     })
-    vm.setADSwiper()
-    vm.getProductList()
     // vm.GetList()
   },
-
   //加载
   onShow: function () {
-
+    vm.setADSwiper()
+    vm.getProductList()
   },
 
   //该方法绑定了页面滑动到底部的事件
@@ -70,13 +67,19 @@ Page({
       page: page
     })
     util.getProductList(param, function (res) {
+      if (!res.data.result) {
+        util.showToast('获取失败')
+        return;
+      }
       console.log("办理类商品" + JSON.stringify(res))
       if (res.data.code == "200") {
         vm.setData({
           banli: res.data.ret.data
         })
       }
-    }, null)
+    }, function (err) {
+      util.showModal("提示", "您的网络似乎有一些问题")
+    })
   },
   // 跳转到商品详情页
   jumpOfficeInfo: function (e) {

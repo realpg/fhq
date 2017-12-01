@@ -1,46 +1,33 @@
 <!--pages/product/product.wxml-->
-<view class="office-bg">
-  <view style='weight:100%;text-align: center;margin-top:20rpx'>
+<view class="white-bg">
+  <view style='text-align: center;margin-top:20rpx'>
     <image class="image_frame" src="{{good_info.img}}" mode="aspectFill"></image>
   </view>
 
   <view style='display: flex;flex-direction: row; margin-bottom:20rpx'>
-    <view class='' style='padding-left: 30rpx;float: left;width: 700rpx;position: relative;'>
-
-      <view class='flex-row' style='width:100%;'>
-        <view class='office-title-font' style='font-weight:bold;width:400rpx;'>
+    <view class='' style='padding-left: 30rpx;'>
+      <view style='position:relative;' style='height:48rpx;'>
+        <view class='font-size-14 text-online' style='font-weight:bold;float:left;'>
           {{good_info.title}}
         </view>
-        <view class='office-font-price' style='margin-left:30rpx ;float: right;position: relative;width:240rpx;text-align:right;'>{{good_info.show_price}}</view>
+        <view class='office-font-price font-size-14 margin-right-20' style='float: right;'>{{good_info.show_price}}
+        </view>
       </view>
 
-      <block wx:if="{{good_info.type==0}}">
-        <view style='display:flex;flex-direction:row;align-items:center;margin-top:0rpx;'>
-          <image src='../../images/address.png' style='width:25rpx;height:25rpx;margin-left:10rpx;'></image>
-          <view class="text-oneline office-font" style='margin-left:10rpx;'>{{good_info.addr}}</view>
-        </view>
-      </block>
-
-      <view style='height:10rpx;'></view>
-      <view style='color:#AAA;width:690rpx;'>
+      <view wx:if="{{good_info.type==0}}" class="text-oneline font-size-12 margin-top-20">{{good_info.addr}}</view>
+      <view style='color:#AAA;' class='margin-top-20 font-size-12'>
         {{good_info.desc}}
       </view>
     </view>
-    <!-- <view class='office-font-price' style='margin-left:30rpx ;float: right;position: relative;margin-top:50rpx;'>
-      {{good_info.show_price}}
-    </view> -->
   </view>
 
-  <view style='width: 100%;height: 20rpx; background: #f5f5f5;'></view>
-
   <block wx:for="{{tw_steps}}">
-    <view style='weight:100%;text-align: center; margin-top:30rpx'>
-      <image class="image_frame" src="{{item.img}}" mode="aspectFill"></image>
+    <view wx:if="{{item.img.length>0}}" class="margin-top-5" style="text-align:center;">
+      <image id="{{index}}" src="{{item.img}}" style="width: {{item.imageWidth}}px; height:{{item.imageHeight}}px;" bindload="imageLoad" data-index="{{index}}" data-curr-url="{{item.img}}" bindtap="clickImg"></image>
     </view>
-    <view style='padding:30rpx;color:#AAA'>
+    <view wx:if="{{item.text.length>0}}" class="font-size-14 margin-top-10 margin-bottom-10 margin-left-20 margin-right-20" style="color:#AAA">
       {{item.text}}
     </view>
-    <view style='width: 100%;height: 20rpx; background: #f5f5f5;'></view>
   </block>
 
   <view style='height:100rpx'></view>
@@ -50,13 +37,13 @@
       <view class="office-share1">
         剩余： {{good_info.count}}间
       </view>
-      <view class='office-share2 text-center' catchtap="gotobuy">立即下单</view>
+      <view class='office-share2 text-center aui-text-white' catchtap="gotobuy">立即下单</view>
     </view>
   </block>
 
   <block wx:if="{{good_info.type==1}}">
     <view class="white-bg weui-flex book-shara-box border-top">
-      <view class='text-center' style='background-color: #ffcc00;width: 100%;margin-left: 0rpx;' catchtap="gotobuy">立即下单</view>
+      <view class='text-center aui-text-white' style='background-color: #ffcc00;width: 100%;margin-left: 0rpx;' catchtap="gotobuy">立即下单</view>
     </view>
   </block>
 

@@ -1,13 +1,14 @@
 <!--pages/templates/messageInfoTpl/messageInfoTpl.wxml-->
 <!--该模板用于资讯页展示-->
 <template name="twListIndex">
-  <view class="margin-top-10 tw-div-shadow">
+  <view class="margin-top-20 tw-div-shadow">
     <view style="margin-left:10px;margin-right:10px;border-radius:5px;" class="white-bg">
       <view style="position:relative;" catchtap="jumpMessageInfo" data-messageid="{{id}}">
         <image src="{{img}}" class="tw-img" mode="aspectFill"></image>
+        <image wx:if="{{flag == 1}}" src="../../images/tuiijan_icon.png" class='tw-tj' style='width:24px;height:24px;'></image>
         <!-- <view class="tw-img mask-div-black"></view> -->
         <!-- <view class="font-size-14 tw-title text-oneline tw-title-div" style="background-image: url('../../images/text_bmask.png');"> -->
-        <view class="font-size-14 tw-title text-oneline tw-title-div" style="background-color:rgba(0,0,0,0.3);border-radius:3px;">
+        <view class="font-size-14 tw-title text-oneline tw-title-div" style="background-color:rgba(0,0,0,0.3);border-radius:3px;min-width:110px;">
           <text class="margin-left-10">{{title}}</text>
         </view>
 
@@ -16,18 +17,14 @@
         <view class="weui-flex padding-bottom-10">
           <view class="weui-flex__item">
             <view class="placeholder" style="display:flex;align-items:center;">
-              <text class="font-size-16  margin-left-5 text-oneline">{{author}}</text>
+              <text class="font-size-12 margin-left-20 text-oneline aui-text-info">{{author}}</text>
             </view>
           </view>
           <view style='-webkit-box-flex: 1.6;-webkit-flex: 1.6;flex: 1.6;'>
             <view class="placeholder  margin-top-5" style="display:flex;align-items:center;float:right;">
-              <image wx:if="{{flag == 0}}" src="" class="opt-icon-sma margin-right-5"></image>
-              <image wx:elif="{{flag == 1}}" src="../../images/fire.png" class="opt-icon-sma margin-right-5"></image>
-              <text wx:if="{{flag == 1}}" class="font-size-12  margin-right-10 grey-font">hot</text>
-
               <image src="../../images/show_n.png" class="opt-icon-sma margin-right-5"></image>
               <text class="font-size-12  margin-right-10 grey-font">{{show_num}}</text>
-              <text class="margin-left-10 text-oneline" style='color:#AAA'>{{created_at}}</text>
+              <text class="margin-left-10 text-oneline margin-right-10" style='color:#AAA'>{{created_at}}</text>
             </view>
           </view>
         </view>

@@ -23,15 +23,15 @@ Page({
         systemInfo: res
       })
     })
-    // vm.GetList()
-  },
-  //加载
-  onShow: function () {
     vm.setData({
       workProduct: []
     })
     vm.setADSwiper()
     vm.getProductList()
+  },
+  //加载
+  onShow: function () {
+
   },
 
   //获取商品信息

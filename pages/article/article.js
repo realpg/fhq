@@ -38,10 +38,14 @@ Page({
       }
       console.log("getMessagegetById :" + JSON.stringify(ret))
       if (ret.data.code == "200") {
-        var zx_info = ret.data.ret.zx_info
+        //咨询信息
+        var zx_info = ret.data.ret.zx_info;
+        zx_info.created_at = util.convertDateFormateM(zx_info.created_at);
+        zx_info.show_num = "阅读 " + zx_info.show_num;
+        //图文步骤信息
         var tw_steps = ret.data.ret.tw_steps
         var title = ret.data.ret.zx_info.title
-        // bookInfo.images_medium = util.qiniuUrlTool(bookInfo.images_medium, "folder_index")
+
         vm.setData({
           zx_info: zx_info,
           tw_steps: tw_steps,
@@ -57,6 +61,34 @@ Page({
     })
   },
 
+  //加载图像
+  imageLoad: function (e) {
+    console.log("imageLoad e:" + JSON.stringify(e))
+    var imageSize = util.imageUtil(e)
+    console.log("index:" + e.currentTarget.id)
+    var index = parseInt(e.currentTarget.id)
+    var obj = vm.data.tw_steps
+    var lr_margin = 10
+    obj[index].imageWidth = imageSize.imageWidth - lr_margin //20为左右边距
+    obj[index].imageHeight = imageSize.imageHeight * ((imageSize.imageWidth - lr_margin) / imageSize.imageWidth)
+    console.log("obj:"+JSON.stringify(obj))
+    vm.setData({
+      tw_steps: obj
+    })
+  },
+  //点击图片，进行预览
+  clickImg: function (e) {
+    console.log(JSON.stringify(e))
+    var currentUrl = e.currentTarget.dataset.currUrl;
+    var img_arr = [];
+    for (var i = 0; i < vm.data.tw_steps.length; i++) {
+      img_arr.push(vm.data.tw_steps[i].img)
+    }
+    wx.previewImage({
+      current: currentUrl, // 当前显示图片的http链接
+      urls: img_arr // 需要预览的图片http链接列表
+    })
+  },
   /**
    * 生命周期函数--监听页面初次渲染完成
    */

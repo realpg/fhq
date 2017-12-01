@@ -478,6 +478,61 @@ function randomString() {
   return pwd;
 }
 
+//获取当前时分秒
+function getCurrentHMS() {
+  var d = new Date();
+  var hours = d.getHours();
+  var minutes = d.getMinutes();
+  var seconds = d.getSeconds();
+  return (hours + ":" + minutes + ":" + seconds);
+}
+
+//日期形式转换
+/*
+ * 将2017-11-08
+ *
+ * 根据type不同转换成不同形式
+ *
+ * type == 1:2017-10-30转换为10月30日
+ *
+ */
+function convertDateFormate(date_str, type) {
+  var date_arr = date_str.split('-');
+  switch (type) {
+    case 1:
+      return date_arr[1] + "月" + date_arr[2] + "日";
+    case 2:
+      return date_arr[0] + "年" + date_arr[1] + "月" + date_arr[2] + "日";
+  }
+  return date_str;
+}
+
+
+//日期时间转换
+/*
+ * 将2017-11-08 10:57:11转换为11月8日 10:57
+ *
+ */
+function convertDateFormateM(date_str) {
+
+  var date_arr = date_str.split(' ');
+  //consoledebug.log("data_arr:" + JSON.stringify(date_arr))
+  return convertDateFormate(date_arr[0], 1) + " " + date_arr[1].substring(0, 5);
+}
+
+/*
+ * 将数据库格式日期转换为显示日期
+ *
+ * 2017-10-30 09:21:22 转为为 2017年10月30日 09:21
+ *
+ *
+ */
+function convertDateToChi(date_str) {
+  var ys_arr = date_str.split(" ");
+  return convertDateFormate(ys_arr[0], 2) + " " + ys_arr[1].substring(0, 5);
+}
+
+
 module.exports = {
   INDEX_PAGE: "/pages/index/index",
   getOpenId: getOpenId,
@@ -504,7 +559,8 @@ module.exports = {
   chooseImage: chooseImage,
   getErrorMsg: getErrorMsg,
   test: test,
-
+  convertDateFormateM:convertDateFormateM,
+  convertDateToChi: convertDateToChi,
   getOfficePageByOfficeId: getOfficePageByOfficeId,
   getMessageList: getMessageList,
   imageUtil: imageUtil,

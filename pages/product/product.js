@@ -51,4 +51,32 @@ Page({
       url: "/pages/downOrders/downOrders?officeid=" + officeid
     })
   },
+  //加载图像
+  imageLoad: function (e) {
+    console.log("imageLoad e:" + JSON.stringify(e))
+    var imageSize = util.imageUtil(e)
+    console.log("index:" + e.currentTarget.id)
+    var index = parseInt(e.currentTarget.id)
+    var obj = vm.data.tw_steps
+    var lr_margin = 20
+    obj[index].imageWidth = imageSize.imageWidth - lr_margin //20为左右边距
+    obj[index].imageHeight = imageSize.imageHeight * ((imageSize.imageWidth - lr_margin) / imageSize.imageWidth)
+    console.log("obj:" + JSON.stringify(obj))
+    vm.setData({
+      tw_steps: obj
+    })
+  },
+  //点击图片，进行预览
+  clickImg: function (e) {
+    console.log(JSON.stringify(e))
+    var currentUrl = e.currentTarget.dataset.currUrl;
+    var img_arr = [];
+    for (var i = 0; i < vm.data.tw_steps.length; i++) {
+      img_arr.push(vm.data.tw_steps[i].img)
+    }
+    wx.previewImage({
+      current: currentUrl, // 当前显示图片的http链接
+      urls: img_arr // 需要预览的图片http链接列表
+    })
+  },
 })

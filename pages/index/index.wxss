@@ -33,3 +33,8 @@ page {
   display: block;
   background-color: #f4f4f4;
 }
+
+.slide-image {
+  width: 100%;
+  height: 100%;
+}

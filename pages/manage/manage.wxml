@@ -1,11 +1,11 @@
 <!--pages/manage/manage.wxml-->
-<view>
+<view class='white-bg'>
   <block wx:for="{{productList}}">
-    <view style='position:relative;height:400rpx;background-color:#f4f4f4;' catchtap="jumpProduct" data-officeid="{{item.id}}">
+    <view style='position:relative;height:400rpx;' catchtap="jumpProduct" data-officeid="{{item.id}}">
       <view style='weight:100%;text-align: center;margin-top:20rpx'>
         <image class="image_frame" src="{{item.img}}" mode="aspectFill"></image>
         <view class='font-size-14 text-oneline tw-title-div' style='background-color:rgba(0,0,0,0.3);position: absolute;top: 50rpx;left: 26rpx;color:#fff;max-width:700rpx;min-width:230rpx;border-radius:0 8rpx 8rpx 0;'>
-          <text style='padding-left:30rpx;text-align:left;' class='text-threeline'>{{item.desc}}</text>
+          <text style='padding-left:30rpx;text-align:left;' class='text-threeline padding-right-30'>{{item.desc}}</text>
         </view>
 
         <view class='font-size-14 text-oneline tw-title-div' style='background-color:rgba(0,0,0,0.3);position: absolute;top: 300rpx;left: 26rpx;color: #fff;width: 700rpx;border-radius: 0 0 6rpx 6rpx;'>

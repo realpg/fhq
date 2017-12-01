@@ -12,7 +12,7 @@
   </swiper>
   <!-- 导航按钮 -->
   <view class="page__bd">
-    <view class="weui-grids">
+    <view class="weui-grids white-bg">
       <navigator url="/pages/message/message?myType=2" class="weui-grid-grating" hover-class="weui-grid_active" data-myType='2'>
         <image class="weui-grid__icon-copy" src="../../images/intro.png" mode="scaleToFill" />
         <view class="weui-grid__label">简介</view>
@@ -27,15 +27,15 @@
       </navigator>
     </view>
   </view>
-  <view class='down-line-5'></view>
-
   <view class="line-text font-size-14" style='line-height:30rpx;'>
     猜您喜欢
   </view>
   <!-- 办公商品列表 -->
-  <block wx:for="{{workProduct}}">
-    <template is="productList" data="{{...item}}" />
-  </block>
+  <view class='white-bg'>
+    <block wx:for="{{workProduct}}">
+      <template is="productList" data="{{...item}}" />
+    </block>
+  </view>
 
   <view style="display:{{show ? 'flex' : 'none'}};flex-direction: column;align-items:center;">
     <view style='height:50rpx'></view>

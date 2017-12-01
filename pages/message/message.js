@@ -28,7 +28,7 @@ Page({
       if (!res.data.result) {
         util.showToast('获取失败')
         vm.setData({
-          show:true
+          show: true
         })
         return;
       }
@@ -36,6 +36,7 @@ Page({
       var messageList = res.data.ret.data
       for (var i = 0; i < messageList.length; i++) {
         messageList[i].img = util.qiniuUrlTool(messageList[i].img, "message_hi");
+        messageList[i].created_at = util.convertDateFormateM(messageList[i].created_at)
       }
       console.log(JSON.stringify(messageList[0].img))
       vm.setData({
@@ -49,9 +50,9 @@ Page({
     })
 
   },
-
+  //点击跳转
   jumpMessageInfo: function (e) {
-    console.log(JSON.stringify("哈哈哈:" + e.currentTarget.dataset.messageid))
+    console.log(JSON.stringify("jumpMessageInfo:" + e.currentTarget.dataset.messageid))
     var messageid = e.currentTarget.dataset.messageid
     wx.navigateTo({
       url: '/pages/article/article?messageid=' + messageid

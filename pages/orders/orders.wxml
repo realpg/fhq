@@ -35,7 +35,7 @@
   <view style='height:20rpx;background-color:white;'></view>
   <view style='display: flex;flex-direction: row;background-color:white;'>
     <view style='float:left;width:300rpx;margin-left:50rpx;line-height:100rpx;font-size:34rpx;color:black;'>企业</view>
-    <view style='float:right;width:350rpx;text-align:right;line-height:100rpx;font-size:34rpx;color:#AAA'>{{enter.name}}</view>
+    <view style='float:right;width:350rpx;text-align:right;line-height:100rpx;font-size:34rpx;color:#AAA' class='text-online'>{{enter.name}}</view>
   </view>
   <view class='down-line'></view>
   <view style='display: flex;flex-direction: row;background-color:white;'>
